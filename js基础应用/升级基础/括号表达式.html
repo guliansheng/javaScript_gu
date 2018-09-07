@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    function fn1() {
+        console.log(this);
+    }
+    function fn2() {
+        console.log(this);
+    }
+    var json = {name:'gu',fn:fn2};
+    ;(fn1,fn2)() //括号表达式中每一项用","隔开,最后只能获取到最后一项
+    ;(fn1,json.fn)() //这里只是将json.fn指向的fn2函数直接拿过来使用,所以this还是指向window
+    ;(json.fn)() //只有一项时,this还是指向json
+</script>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <meta name=description content="">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <title></title>
+    <style type="text/css">
+        #First-screen,#other-img{
+            width:300px;
+            height:150px;
+            border:1px solid green;
+            margin:50px auto;
+            background:url('加载-017.gif') #ccc no-repeat 50% 50%;
+        }
+        #other-img{
+            margin:1000px auto;
+        }
+        #First-screen img,#other-img img{
+            width:300px;
+            height:150px;
+            display:none;
+            border:none;
+        }
+    </style>
+</head>
+<body>
+    <div id="First-screen">
+        <img src="" tureSrc = '12.png'>
+    </div>
+    <div id="other-img">
+        <img src="" tureSrc = '24.png'>
+    </div>
+</body>
+<script type="text/javascript">
+    //作用:保证页面打开速度
+    //原理:
+    //1.对于首屏内容中的图片：首先给对应的区域一张默认图片占着位置（默认图需要非常的小，一般可以维持在5kb以内），当首屏内容都加载完成后（或者也可以给一个延迟的时间），再开始加载真实的图片
+    //2.对于其它屏中的图片：也是给一张默认的图片占位，当滚动条滚动到对应区域的时候，我们再开始加我真实的图片
+
+    var Firstscreen = document.getElementById('First-screen') , img = Firstscreen.getElementsByTagName('img')[0];
+    // window.onload = function(){ //真实项目使用
+    //     newImg = new Image; //创建一个临时img标签
+    //     newImg.src = img.getAttribute('tureSrc');//
+    //     newImg.onload = function(){ //当图片正常加载时才会执行
+    //         img.style.display = 'block';
+    //         img.src = this.src;
+    //         newImg = null;
+    //     }
+    // }
+
+    //首屏图片加载
+    setTimeout(function(){
+        newImg = new Image; //创建一个临时img标签,将真实图片的src先让这个临时标签检测是否为有效地址
+        newImg.src = img.getAttribute('tureSrc');
+        newImg.onload = function(){ //当图片正常加载时才会执行
+            img.style.display = 'block';
+            img.src = this.src;
+            newImg = null;
+            console.log("图片加载完成!");
+        }
+        console.log("图片加载中...");
+    },1000);
+
+
+    //下方屏图片加载
+    window.onscroll=function(){
+        var otherimg = document.getElementById('other-img') , img = otherimg.getElementsByTagName('img')[0];
+        if (otherimg.isload == true){return;}
+        var winS = document.documentElement.scrollTop + document.documentElement.clientHeight;
+        var otherS = otherimg.offsetTop + otherimg.offsetHeight;
+        if(winS >= otherS){
+            newImg = new Image;
+            newImg.src = img.getAttribute('tureSrc');
+            newImg.onload = function(){
+                img.style.display = 'block';
+                img.src = this.src;
+                newImg = null;
+                console.log("加载完成")
+            }
+            otherimg.isload = true;//设置一个自定义属性,告诉浏览器图片已经加载完成了,不管是否正常加载,都不在执行这里的代码,防止重复执行
+        }
+    }
+</script>
+</html>

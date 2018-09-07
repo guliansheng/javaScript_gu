@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <style type="text/css">
+        .list ul{
+            list-style:none;
+            margin:0;
+            padding:0;
+            display:flex;
+            font-size:0;
+            justify-content:center;
+        }
+        .list li+li{
+            margin-left:10px;
+        }
+        .list img{
+            margin:0;
+            padding:0;
+        }
+        .amp{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .amp img{
+            width:300px;
+            height:120px;
+        }
+    </style>
+</head>
+<body>
+    <div class="list">
+        <ul>
+            <li><img src="7.jpg" alt="" width="100" height="40"></li>
+            <li><img src="8.jpg" alt="" width="100" height="40"></li>
+            <li><img src="9.jpg" alt="" width="100" height="40"></li>
+            <li><img src="10.jpg" alt="" width="100" height="40"></li>
+        </ul>
+        <div class='amp'></div>
+    </div>
+</body>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+var list = utils.getElementsByClassName('list')[0] , lis = list.getElementsByTagName('li') , amp = utils.getElementsByClassName('amp',list)[0];
+for (var i = 0; i < lis.length; i++) {
+    ~function(){
+        lis[i].addEventListener('mouseover',function(e){
+            e = e || window.event;
+            var tar = e.target = e.target || e.srcElement;
+            if(tar.tagName.toLowerCase() === 'img'){
+                tar = tar.cloneNode(true);
+                if(amp.getElementsByTagName('img')[0]){
+                   amp.removeChild(amp.getElementsByTagName('img')[0])
+                }
+                utils.append(amp,tar);
+                amp.style.display = 'block';
+            }
+        });
+        lis[i].addEventListener('mouseout', function(e){
+            e = e || window.event;
+            var tar = e.target = e.target || e.srcElement;
+            if(tar.tagName.toLowerCase() === 'img'){
+                amp.style.display = 'none'
+            }
+        });
+        lis[i].addEventListener('mousemove', function(e){
+            e = e || window.event;
+            var tar = e.target = e.target || e.srcElement;
+            amp.style.left = (e.clientX + 15) + 'px';
+            amp.style.top = (e.clientY + 15) + 'px';
+        })
+    }()
+};
+</script>
+</html>

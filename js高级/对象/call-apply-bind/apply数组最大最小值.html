@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    var arr = [34,56,22,23,45,22,23,76,54,34,23,34]
+    console.log("括号表达式 : "+eval(arr.join(',')))//括号表达式中出现多项内容,用","隔开,我们只能获取到最后一项的值
+    console.log(...arr);
+    console.log("扩展符 : "+Math.max(...arr));
+    console.log("扩展符 : "+Math.min(...arr));
+    console.log("扩展符 : "+Math.max.apply(null, arr));
+    console.log("扩展符 : "+Math.min.apply(null, arr));
+    console.log("字符串拼接 : "+eval("Math.max("+arr.toString()+")"));
+    console.log("Math.max("+arr.toString()+")");
+</script>
+</html>

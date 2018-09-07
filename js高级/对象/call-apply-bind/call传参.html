@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+var json = {name:'gu'}
+function sum(num1,num2){
+    console.log(num1+num2);
+    console.log(this);
+}
+sum.call(100,200);
+sum.call(json,100,200);
+sum.apply(json,[100,200]);
+sum.call();//this -> window ; 在严格模式下:this -> undefined
+sum.call(null);//this -> window ; 在严格模式下:this -> null
+sum.call(undefined);//this -> window ; 在严格模式下:this -> undefined
+</script>
+</html>

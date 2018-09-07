@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    var str = 'gu2893gu898gu674';
+    var reg = /gu(\d+)/g;
+    var ary = str.replace(reg,function(){
+        console.log(arguments[0])//每一次大正则捕获的内容
+        console.log(arguments[1])//每一次小正则捕获的内容,没有则不捕获
+        return str;
+    });
+    console.log(ary);
+    var str2 = str.replace(reg,"gu获取");
+    console.log(str2)
+
+    //1.更换数字为中文数字
+    console.log("1.更换数字为中文数字")
+    str = '2018729';
+    ary = ["零","壹","贰","叁","肆","伍","陆","柒","捌","玖"];
+    str2 = str.replace(/\d/g,function(){
+        console.log(arguments);
+        var num = arguments[0];
+        return ary[num];
+    })
+    console.log(str2)
+
+    //2.记录字符串中每个字母出现次数
+    console.log("2.记录字符串中每个字母出现次数")
+    reg = /[a-z]/gi
+    str = "zhufnegjiaoyupeixun";
+    var obj = {}
+    str.replace(reg,function(){
+        (arguments[0] in obj) ? obj[arguments[0]]++ : obj[arguments[0]] = 1;
+    })
+    console.log(obj)
+
+    //3.模板引擎实现初步原理
+    console.log("3.模板引擎实现初步原理")
+    str = "my name is {0} , my age is {1} , I love {2}";
+    reg = /{(\d+)}/g
+    arr = ["gu","25","javaScript"]
+    str2 = str.replace(reg,function(){
+        return arr[arguments[1]]
+    })
+    console.log(str2)
+
+    //4.获取地址传参值
+    console.log("4.获取地址传参值")
+    str = "https://www.baidu.com/baidu?&ie=utf-8&word=%E8%BF%99%E6%98%AF"
+    reg = /([^?&=]+)=([^?&=]+)/g
+    obj = {}
+    str.replace(reg,function(){
+        console.log(arguments[0])
+        obj[arguments[1]] = arguments[2];
+    })
+    console.log(obj)
+
+    //5.时间字符串格式化
+    console.log("5.时间字符串格式化")
+    str = "2018-7-30 10:37:6"
+    arr = []
+    str.replace(/^(\d{4})[-/](\d{1,2})[-/](\d{1,2}) +(\d{1,2}):(\d{1,2}):(\d{1,2})$/g,function(){
+        for (var i = 0; i < arguments.length-2; i++) {
+            arr[i] = arguments[i+1]
+        };
+    })
+    regStr = "{0}年{1}月{2}日 {3}时{4}分{5}秒"
+    reg = /{(\d+)}/g
+    regStr2 = regStr.replace(reg,function(){
+        var num = arguments[1];
+        return arr[num] < 10? "0"+arr[num] : arr[num];
+    })
+    console.log(regStr2)
+</script>
+</html>

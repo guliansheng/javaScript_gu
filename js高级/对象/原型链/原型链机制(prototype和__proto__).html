@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    function Fn(){
+        n = 10;//这里的n和实例没有关系,只有通过this才会将变量添加到实例中
+        this.AA = function(){
+            console.log("AA[私]")
+        }
+        this.BB = function(){
+            console.log('BB[私]');
+        }
+    }
+    Fn.prototype.AA = function(){//设置公有方法
+        console.log("AA[公]")
+    }
+    Fn.prototype.age = 20;//设置公有属性
+    var f1 = new Fn();
+    var f2 = new Fn();
+    console.log(f1.n);
+    console.log(f1.AA===f2.AA);
+    console.log(f1.__proto__.AA);
+    console.log(f1.__proto__.AA===f2.__proto__.AA);
+    console.log(f1.__proto__.AA===Fn.prototype.AA);
+    f1.name = 'f1设置私有属性name';
+    f1.__proto__.name = 'f1给原型设置了公有属性name,所有该原型创建的实例可以使用该属性';
+    console.log("f2.name: "+f2.name);
+    console.log("f1.name: "+f1.name);
+    console.log("f1.__proto__.name: "+f1.__proto__.name);
+</script>
+</html>

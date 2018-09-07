@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+            #img{
+          	position: absolute;
+          	top:50%;
+          	left: 50%;
+          }
+	</style>
+</head>
+<body>
+	<img src="images/1.png" id='img'>
+</body>
+<script>
+     imgobj=document.getElementById('img');
+     i=2;
+          imgobj.onclick=function(){   
+             imgobj.src='images/'+i+'.png';
+             i++;
+             if(i==6){
+               i=1;
+             }
+          }     
+</script>
+</html>

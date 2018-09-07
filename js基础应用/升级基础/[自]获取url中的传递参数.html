@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+var str = 'https://www.baidu.com/s?ie=utf-8&isbd=1&isid=0C4526DFF9E24122&ie=utf-8&f=8&rsv_bp=0';
+var str2 = 'https://www.baidu.com/s?&id=0C4&ce=utf-8&age=8&hop=0&my=gu';
+function queryURLParameter(url){
+    var quesIndex = url.indexOf('?');
+    if(quesIndex === -1){
+        return {}
+    }
+    else{
+        var str2 = str.substr(quesIndex+1);
+        var arr2=[];
+        var json={};
+        arr = str2.split('&')
+        for(var i = 0;i < arr.length;i++){
+            arr2 = arr[i].split('=');
+            json[arr2[0]] = arr2[1];
+        }
+        return json;
+    }
+}
+String.prototype.myQueryURLParameter = function myQueryURLParameter(){
+    var obj={},
+    reg = /([^=?&]+)=([^=?&]+)/g;
+    this.replace(reg,function(){
+        var arg = arguments;
+        obj[arg[1]]=arg[2];
+    })
+    return obj;
+}
+console.table(queryURLParameter(str));
+console.table(str2.myQueryURLParameter());
+</script>
+</html>

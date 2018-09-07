@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box1,.box2{
+            width: 300px;
+            height:100px;
+            margin:20px auto;
+            background:#ccc;
+            border: 10px solid #ff0;
+            padding:10px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2">scrollTop=scrollHeight-clientHeight=padding+包含内容的完全高度-(padding+height-滚动条)=包含内容的完全高度-height-滚动条scrollWidth=padding+包含内容的完全高度clientWidth=padding+height-滚动条offsetWidth=border+padding+height;scrollTop=scrollHeight-clientHeight
+            =padding+包含内容的完全高度-(padding+height-滚动条)
+            =包含内容的完全高度-height-滚动条</div>
+</body>
+<script>
+    let box1=document.querySelector('.box1');
+    console.log('这是box1的clientWidth：'+box1.clientWidth);
+    console.log('这是box1的clientHeight：'+box1.clientHeight);
+    console.log('这是box1的scrollWidth：'+box1.scrollWidth);    
+    console.log('这是box1的scrollHeight：'+box1.scrollHeight);
+    console.log('这是box1的offsetWidth：'+box1.offsetWidth);
+    console.log('这是box1的offsetHeight：'+box1.offsetHeight);
+    console.log('这是box1的scrollTop：'+box1.scrollTop);    
+    console.log('这是box1的scrollLeft：'+box1.scrollLeft);
+    let box2=document.querySelector('.box2');
+    // box2.scrollTop=100;
+    // box2.scrollLeft=box2.scrollWidth;
+    // box2.style.width=400+'px'; 
+    console.log('====================================');
+    console.log('这是box2的clientWidth：'+box2.clientWidth);
+    console.log('这是box2的clientHeight：'+box2.clientHeight);
+    console.log('这是box2的scrollWidth：'+box2.scrollWidth);    
+    console.log('这是box2的scrollHeight：'+box2.scrollHeight);
+    console.log('这是box2的offsetWidth：'+box2.offsetWidth);
+    console.log('这是box2的offsetHeight：'+box2.offsetHeight);
+    console.log('这是box2的scrollTop：'+box2.scrollTop); 
+    console.log('这是box2的scrollLeft：'+box2.scrollLeft);
+</script>
+</html>

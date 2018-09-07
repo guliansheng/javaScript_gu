@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            position:absolute;
+            top:20px;
+            left:20px;
+            box-shadow:5px 5px 6px 2px #ccc;
+        }
+        .box img{
+            border:none;
+            display:block;
+        }
+        .mark{
+            position:absolute;
+            top:0;
+            left:0;
+            background:#000;
+            opacity:0.5;
+            filter: alpha(opacity = 50);
+            width:80px;
+            height:80px;
+            display:none;
+            cursor: move;
+        }
+        .boxR{
+            width:160px;
+            height:160px;
+            overflow:hidden;
+            position:relative;
+            top:20px;
+            left:500px;
+            display:none;
+        }
+        .boxR img{
+            position:absolute;
+            top:0;
+            left:0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="10.jpg" width="400" height="160">
+        <div class="mark"></div>
+    </div>
+    <div class="boxR"><img src="10.jpg" width="800" height="320"></div>
+</body>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+var box = utils.getElementsByClassName('box')[0] , mark = utils.getElementsByClassName('mark')[0] , boxR = utils.getElementsByClassName('boxR')[0];
+box.onmouseover = function(){
+    mark.style.display = 'block';
+    boxR.style.display = 'block';
+}
+box.onmouseout = function(){
+    mark.style.display = 'none';
+    boxR.style.display = 'none';
+}
+box.onmousemove = function(e){
+    e = e || window.event;
+    var target = e.target || e.srcElement;
+    setPosition(e);
+}
+function setPosition(e){
+    var top = e.clientY - box.offsetTop - (mark.offsetHeight/2) , left = e.clientX - box.offsetLeft - (mark.offsetWidth/2);
+    var minL = 0 , minT = 0 , maxL = box.offsetWidth - mark.offsetWidth , maxT =box.offsetHeight - mark.offsetHeight;
+    var tempL = left , tempT = top;
+    left = left < minL ? (tempL = minL) : (left > maxL ? (tempL = maxL) : (tempL = left));
+    top = top < minT ? (tempT = minT) : (top > maxT ? (tempT = maxT) : (tempT = top));
+    mark.style.top = top + 'px';
+    mark.style.left = left +'px';
+
+    //右侧图片运动
+    var oImg = boxR.getElementsByTagName('img')[0];
+    oImg.style.left = -tempL*2 + 'px';
+    oImg.style.top = -tempT*2 + 'px';
+}
+</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <div class="div" style="width:200px;height:100px;background:#ccc;margin-bottom:10px">这是div1</div>
+    <div class="div2" style="width:200px;height:100px;background:#ccc">这是div2</div>
+</body>
+<script>
+var innerHTML='window';//这里不能用let,因为let定义的全局变量不是window的身上的属性,这里的代码也不能放在window.onload中,这时定义的不是全局变量,而是window.onload中的局部变量;
+window.onload=function(){
+    odiv2=document.querySelector('.div2');
+    odiv=document.querySelector('.div');
+    function fun(){
+        console.log(this.innerHTML);
+    }
+    let json={
+        innerHTML:'json',
+        fun:fun,
+    }
+
+    //函数中的this指向执行这个事件或方法前面的对象,即 . 前面的主体
+
+    fun();//全局变量和全局方法是window身上的属性和方法,这里实际是window.fun()
+
+    json.fun();//json是主体
+
+    odiv.onclick=fun();//这里直接执行了函数fun,而不是将这个方法交给点击事件来执行,所以这里执行的实际是window.fun();
+
+    odiv.onclick=fun;//odiv1是主体,执行点击事件;
+
+    odiv2.onclick=json.fun;//odiv2是主体,json.fun只是方法的地址;
+}
+</script>
+</html>

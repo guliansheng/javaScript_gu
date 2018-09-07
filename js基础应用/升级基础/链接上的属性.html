@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+    //=>真实项目中很多需求都是通过动态创建元素来完成的，其中有一个需求：解析一个URL地址每一部分的信息（包含问号传递的参数值）
+    //1、纯字符串拆分截取
+    //2、编写强大的正则，捕获到需要的结果
+    //3、通过动态创建一个A标签，利用A标签的一些内置属性来分别获取每一部分的内容
+    var link = document.createElement('a');
+    link.href= "http://www.zhufengpeixun.cn/stu/?name=zxt&age=27&sex=0#teacher"
+    console.dir(link)
+    console.log(link.search)
+</script>
+</html>

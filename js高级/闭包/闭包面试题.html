@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+
+</body>
+<script>
+var number = 2;
+var obj={
+            number:4,
+            fn1:(function(){//这个函数在定义时被执行了,所以这里的obj.fn1同样占用了下面的返回函数re ;
+
+                this.number*=2;//因为这里的密名函数是直接执行的,所以这里的this指向window,此时this.number是全局变量number,所以全局中的number被翻倍了;
+
+                number=number*2;//这里的number虽然被定义了,但没有具体的值,是无意义的数据;
+                console.log(number);//打印出NaN
+
+                var number=3;//这里和20行的number是同一个number,但20中的number没有被赋值;
+
+                return function re(){
+                    this.number*=2;
+                    number*=3;
+                    console.log('这里是函数fn1中打印的number: '+number);
+                }
+            })(),
+            db2:function(){this.number*= 2}
+        }
+var fn1=obj.fn1;//这里的fn1引用了obj中的fn1,则下面再用到相同作用域中的数据时,会沿用这里的数据
+
+console.log('这里是直接打印的number: '+number);//这里打印的是全局中的number,在18行被翻倍了;
+
+fn1();//因为这时fn1在执行时没有被对象引用,所以这里在执行时re函数中的this.number就是window.number,所以window.number被翻倍了
+
+obj.fn1();//这里相当于fn1(),和上面的fn1()所起到的作用相同,所以使用了相同作用域中的值,沿用了闭包中的number,但这里的re函数中的this.number是指obj的number,所以这里将obj.number翻倍了;
+
+console.log('这里打印的是window的number: '+window.number);//window.number被翻倍了两次,所以是8;
+
+console.log('这里打印的是obj的number: '+obj.number);//这里被39行的代码翻倍了,所以是8;
+</script>
+</html>

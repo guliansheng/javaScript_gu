@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+        .outer{
+            width:300px;
+            height:300px;
+            border:10px solid black;
+            margin:50px 400px;
+            background:lightgreen;
+            position:relative;
+        }
+        .inner{
+            width:200px;
+            height:200px;
+            margin:30px 30px;
+            border:20px solid black;
+            background:#763294
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+</body>
+<script type="text/javascript">
+    var outer = document.getElementsByClassName('outer')[0]
+    var inner = document.getElementsByClassName('inner')[0]
+    function offset(curEle){
+        var totalLeft = null,totalTop = null,par = curEle.offsetParent;
+        totalLeft += curEle.offsetLeft;
+        totalTop +=curEle.offsetTop;
+        while(par){
+            if(navigator.userAgent.indexOf("MSIE 8.0") === -1){//ie8中已经加过了
+                //累加父级参照物的边框
+                totalLeft += par.clientLeft;
+                totalTop +=par.clientTop;
+            }
+            //累加父级参照物本身的偏移
+            totalLeft += par.offsetLeft;
+            totalTop +=par.offsetTop;
+            par = par.offsetParent;
+        }
+        return {left:totalLeft,top:totalTop}
+    }
+console.log(offset(outer))
+console.log(offset(inner))
+</script>
+</html>

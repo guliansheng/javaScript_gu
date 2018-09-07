@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	.text{
+		width: 800px;
+		height: 400px;
+		margin: 0 auto;
+	}
+	textarea{
+		max-width: 600px;
+		max-height: 200px;
+		width: 800px;
+		height: 400px;
+		padding: 100px;
+	}
+	.encryption{
+		width: 800px;
+		height: 40px;
+		margin: 0 auto;
+		line-height: 40px;
+	}
+	</style>
+</head>
+<body>
+<div class="text">
+	<textarea>用户名:顾连生 密码:48448484848</textarea>
+</div>
+	<div class="encryption">
+		<label for="text">密钥：</label>
+		<input type="password" class="miyao" id="text" placeholder="只能输入数字！">
+		<input type="button" value="加密" class="jiami">
+		<input type="button" value="解密" class="jiemi">
+	</div>
+</body>
+<script type="text/javascript">
+	with(document){
+		jiamiobj=getElementsByClassName('jiami')[0];
+		jiemiobj=getElementsByClassName('jiemi')[0];
+		miyaoobj=getElementsByClassName('miyao')[0];
+		textareaobj=getElementsByTagName('textarea')[0];
+	}
+	var j=0;
+	var miyao1='';
+	var miyao2='';
+	var miyao3='';
+	jiamiobj.onclick=function () {
+		jiami();
+	}
+	jiemiobj.onclick=function(){
+		jiemi();
+	}
+	function jiami(){
+		miyao1=miyaoobj.value;
+		if(j==0 && miyao1!=''){
+			miyao3=xunsuan(miyao1);
+			j++;
+			console.log(j+':'+miyao1+"</br>");
+		}
+	}
+	function jiemi(){
+		miyao2=miyaoobj.value;
+		if(j==1 && miyao2==miyao3 && miyao2!=''){
+			xunsuan(miyao2);
+			j--;
+			console.log(j+':'+miyao2);
+		}
+	}
+	function xunsuan(miyao){
+		var newtext='';
+		var text2=textareaobj.value;
+		for(i=0;i<text2.length;i++){
+			textchar=text2.charCodeAt(i);//charCodeAt()将字符转化成数字;
+			newchar=textchar^miyao;
+			newtext+=String.fromCharCode(newchar);//String.fromCharCode()将数字转化成字符;
+		}
+		textareaobj.value=newtext;
+		miyaoobj.value='';
+		return miyao;
+	}
+</script>
+</html>

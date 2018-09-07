@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    var n = 0;
+    setTimeout(function(){//定时器属于异步编程
+        n++;
+        console.log("第一个n:"+n)
+    },0)//浏览器中对于定时器有最小等待时间,即使设置为0也需要等待
+    console.log("第二个n:"+n);
+
+
+
+
+    var m = 0;
+    setTimeout(function(){//后执行
+        m++;
+        console.log("第一个m:"+m);
+    },20)
+    console.log("第二个m:"+m);
+
+    setTimeout(function(){//先执行
+        m++;
+        console.log("第三个m:"+m)
+    },10)
+
+    for(var i = 0; i<1000000000; i++){}
+    console.log("第四个m:"+m)
+</script>
+</html>

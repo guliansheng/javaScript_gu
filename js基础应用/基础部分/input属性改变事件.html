@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <input type="text" name="" value="当值改变时" id="input">
+</body>
+<script>
+    input.value='name';
+    input.addEventListener('input',function(){
+        console.log('改变了-- oninput事件');
+    })
+    input.addEventListener('change',function(){
+        console.log('改变了-- onchange事件');
+    })
+</script>
+</html>

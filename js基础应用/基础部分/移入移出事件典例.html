@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	<h1>aaaaaaaaaaaaaaaaaaaaaaaaa</h1>
+	<h1>aaaaaaaaaaaaaaaaaaaaaaaaa</h1>
+	<h1>aaaaaaaaaaaaaaaaaaaaaaaaa</h1>
+	<h1>aaaaaaaaaaaaaaaaaaaaaaaaa</h1>
+	<h1>aaaaaaaaaaaaaaaaaaaaaaaaa</h1>
+    <br>
+	<h2>bbbbbbbbbbbbbbbbbbbbbbbbbb</h2>
+	<h2>bbbbbbbbbbbbbbbbbbbbbbbbbb</h2>
+	<h2>bbbbbbbbbbbbbbbbbbbbbbbbbb</h2>
+	<h2>bbbbbbbbbbbbbbbbbbbbbbbbbb</h2>
+	<h2>bbbbbbbbbbbbbbbbbbbbbbbbbb</h2>
+</body>
+<script type="text/javascript">
+
+
+h1objs=document.getElementsByTagName('h1');
+for(i=0;i<h1objs.length;i++){
+	h1objs[i].onmouseenter=function(){
+		this.style.background='#ccc';
+		//循环内出现方法，该方法中对象若要用到变量，则内部要用this，不能用相应含变量的对象；
+	}
+	h1objs[i].onmouseleave=function(){
+		this.style.background='#fff';
+	}
+}
+
+
+
+
+h2objs=document.getElementsByTagName('h2');
+for(i=0;i<h2objs.length;i++){
+	h2objs[i].setAttribute('num',0);	
+	h2objs[i].onclick=function(){		
+		nums=this.getAttribute('num');		
+		if(nums%2==0){
+			this.style.background='#ccc';
+		}
+		else{
+			this.style.background='#fff';
+		}
+		this.setAttribute('num',parseInt(nums)+1);
+	}
+}
+</script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    //公共方法存放
+    var utils = (function(){
+        return {
+            aa:function(){
+
+            }
+        }
+    })()
+
+    //单个模块开发(A)
+    var skipRender = (function(){
+        var fn = function(){//实现的一个方法
+            //todo
+        }
+        return {
+            init:function(){
+                fn(); //自己调用自己模块中的方法,直接调用即可
+            },
+            fn:fn //将fn方法暴露出来,以便他人使用
+        }
+    })();
+    skipRender.init();
+
+    //单个模块开发(B)
+    var weatherRender = (function(){
+        var fn = function(){
+            //todo
+        }
+        return {
+            init:function(){
+                skipRender.fn()//调取模块A中的方法
+                utils.aa()//调用公共方法
+            }
+        }
+    })();
+    weatherRender.init();
+</script>
+</html>

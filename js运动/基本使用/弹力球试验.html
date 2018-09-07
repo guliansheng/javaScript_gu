@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+#tl{
+	width: : 100px;
+	height: 100px;
+    position: absolute;
+    top:0px;
+    left: 0px;
+}
+img{
+	display:block;
+}
+.a{
+    width:800px;
+    height: 200px;
+	margin: auto;
+ 	background: #0f0;
+ 	color: #00f;
+
+
+}
+</style>
+<body>
+	<div id="tl"><img src="../images/ball.png"></div>
+	<!-- <div class="a"></div>
+	<div class="a"></div>
+	<div class="a"></div>
+	<div class="a"></div>
+	<div class="a"></div>
+	<div class="a"></div>
+	<div class="a"></div> -->
+
+</body>
+<script type="text/javascript">
+ tlobj=document.getElementById('tl');
+ //如果将这两条语句放在方法外面，当改变屏幕宽高时球还是按原来屏幕的宽高移动，不太美观；
+ // screenHeight=document.documentElement.clientHeight;
+ // difHeight=screenHeight-100;
+ ys=0;
+ yv=1;
+ xs=0;
+ xv=1;
+ function getTl(){
+ 	screenHeight=document.documentElement.clientHeight;
+    difHeight=screenHeight-100;
+ 	ys+=yv;
+    if(ys>=difHeight){
+    	yv=-yv;
+    }
+    if(ys<=0){
+    	yv=-yv;
+    }
+
+    tlobj.style.top=ys+'px';
+
+    screenWidth=document.documentElement.clientWidth;
+    difWidth=screenWidth-100;
+ 	xs+=xv;
+    if(xs>=difWidth){
+    	xv=-xv;
+    }
+    if(xs<=0){
+    	xv=-xv;
+    }
+
+    tlobj.style.left=xs+'px';
+ }
+ time=setInterval(getTl,10);
+ tlobj.onmouseover=function(){
+ 	clearInterval(time);
+ }
+ tlobj.onmouseout=function(){
+ 	time=setInterval(getTl,10);
+ }
+ </script>
+</html>

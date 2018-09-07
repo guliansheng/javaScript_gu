@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            margin:0;
+        }
+        .box{
+            position: relative;
+            border:10px solid #ff0;
+        }
+        .box1{
+            border:10px solid #ccc;
+            position: relative;
+            text-align:center;
+        }
+        .box2{
+            display: inline-block;
+            width: 200px;
+            height:200px;
+            margin:20px auto;
+            background:#ccc;
+            border: 10px solid #ff0;
+            border-left: 5px solid #ff0;
+            padding:10px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="box1">
+            <div class="box2">scrollTop=scrollHeight-clientHeight=padding+包含内容的完全高度-(padding+height-滚动条)=包含内容的完全高度-height-滚动条scrollWidth=padding+包含内容的完全高度clientWidth=padding+height-滚动条offsetWidth=border+padding+  height;scrollTop=scrollHeight-clientHeight=padding+包含内容的完全高度-(padding+height-滚动条)=包含内容的完全高度-height-滚动条
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    let box2=document.querySelector('.box2');
+    box2.scrollTop=50;
+    box2.scrollLeft=50;
+    // box2.style.width=400+'px';
+    console.log('这是box2的scrollTop：'+box2.scrollTop);
+    console.log('这是box2的scrollLeft：'+box2.scrollLeft);
+    console.log('这是box2的clientTop：'+box2.clientTop);
+    console.log('这是box2的clientLeft：'+box2.clientLeft);
+    console.log('这是box2的offsetTop：'+box2.offsetTop);
+    console.log('这是box2的offsetLeft：'+box2.offsetLeft);
+    console.log('这是box2的offsetParent.className：'+box2.offsetParent.className);
+</script>
+</html>

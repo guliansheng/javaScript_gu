@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+        div{
+            width:300px;
+            height:150px;
+            border:1px solid #ccc;
+        }
+        ul {
+            list-style:none;
+            margin:0;
+            padding:0;
+        }
+        li{
+            width:100%;
+            height:25px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul id='ul'>
+            <li>84</li>
+            <li>67</li>
+            <li>94</li>
+            <li>78</li>
+            <li>99</li>
+            <li>57</li>
+        </ul>
+    </div>
+</body>
+<script type="text/javascript">
+var uli = document.getElementsByTagName('ul')[0]
+var oli = document.getElementsByTagName('li');
+var ary = [].slice.call(oli);
+ary.sort(function(a,b){
+    return parseFloat(a.innerHTML) - parseFloat(b.innerHTML);
+});
+var frg = document.createDocumentFragment();//创建一个文档碎片
+for (var i = 0; i < ary.length; i++) {
+    frg.appendChild(ary[i]);
+};
+uli.appendChild(frg);//存在映射机制,只是对之前的li进行重新排序
+frg = null;
+</script>
+</html>

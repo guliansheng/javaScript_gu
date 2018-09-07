@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    function A(){
+        this.name = 'this is A';
+    }
+    A.prototype.getName = function(){
+        console.log(this.name)
+    }
+    function B(){
+        A.call(this);//将父类的私有属性和方法克隆一份,作为子类的私有属性和方法
+    }
+    B.prototype = Object.create(A.prototype);//将父类公有和私有的添加到子类的公有中
+    B.prototype.constructor = B;
+    var b = new B;
+    console.dir(b)
+    b.getName()
+</script>
+</html>

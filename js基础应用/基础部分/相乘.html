@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<input class='text1' type="text" >
+<input class='text2' type="text" >
+<input type="button" class="butt" value='ok'>
+</body>
+<script type="text/javascript">
+text1obj=document.getElementsByClassName('text1')[0];
+text2obj=document.getElementsByClassName('text2')[0];
+buobj=document.getElementsByClassName('butt')[0];
+text1obj.name='name1';
+buobj.onclick=function(){
+	num1=parseInt(text1obj.value);
+	num2=parseInt(text2obj.value);
+	alert(num1*num2)
+}
+</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>页面跳转</title>
+</head>
+<style >
+#tz{
+	width: 600px;
+	height: 50px;
+	font-size: 20px;
+	background: #000;
+	color: #0f0;
+	line-height: 50px;
+	text-align: center;
+	border-radius: 50px;
+	margin: auto;
+}
+</style>
+<body>
+<div id="tz">提交成功，页面将在<span id="tid">3</span>秒后跳转到百度！</div>	
+<button id='bid'>停止跳转</button>
+</body>
+<script>
+s=4;
+tidobj=document.getElementById('tid');
+sobj=setInterval(function(){
+	tidobj.innerHTML=--s;
+	if(s==0){
+     location='http://www.baidu.com';
+	}
+},1000);
+bidobj=document.getElementById("bid");
+bidobj.onclick=function(){
+	clearInterval(sobj);
+    tzobj=document.getElementById("tz");
+	tzobj.innerHTML="已经成功停止跳转";
+}
+</script>
+</html>

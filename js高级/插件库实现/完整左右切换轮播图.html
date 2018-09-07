@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    *{margin: 0px;padding: 0px;}
+    .banner{
+        margin:40px auto;
+        position: relative;
+        cursor: pointer;
+        overflow: hidden;
+        background:url('bgimg.gif') #f2f2f2 no-repeat 50% 50%;
+    }
+    .banner-content{
+        position:relative;
+        overflow:hidden;
+    }
+    .banner-content img{
+        opacity: 0;
+        filter:alpha(opacity=0);
+        float: left;
+    }
+    .pointer-left,.pointer-right{
+        width: 30px;
+        height: 50px;
+        position: absolute;
+        top: 50%;
+        opacity: 0;
+        margin-top:-25px;
+    }
+    .pointer-left{
+        left:20px;
+    }
+    .pointer-right{
+        right:20px;
+    }
+    .banner:hover .pointer{opacity: 0.5;}
+    .pointer-right:hover{opacity: 0.9!important;}
+    .pointer-left:hover{opacity: 0.9!important;}
+    .banner-dot{
+        height: 12px;
+        position: absolute;
+        right:20px;
+        bottom:20px;
+    }
+    .banner-dot li{
+        width: 10px;
+        height: 10px;
+        border: solid 2px #fff;
+        border-radius:10px;
+        float: left;
+        list-style: none;
+        margin-right: 13px;
+        background: #ccc;
+    }
+    .banner-dot li.on{
+        background:#ff8101;
+    }
+    </style>
+</head>
+<body>
+<div class="banner">
+    <div class="banner-content"></div>
+    <ul class="banner-dot"></ul>
+    <div class="pointer-left pointer"><img src="prev.png" alt="" width='30' height='50'></div>
+    <div class="pointer-right pointer"><img src="next.png" alt="" width='30' height='50'></div>
+</div>
+<div class="banner">
+    <div class="banner-content"></div>
+    <ul class="banner-dot"></ul>
+    <div class="pointer-left pointer"><img src="prev.png" alt="" width='30' height='50'></div>
+    <div class="pointer-right pointer"><img src="next.png" alt="" width='30' height='50'></div>
+</div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript" src="move.js"></script>
+<script type="text/javascript">
+var data = [
+    {isSrc:'1.jpg',height:400,width:1000},
+    {isSrc:'2.jpg',height:400,width:1000},
+    {isSrc:'3.jpg',height:400,width:1000},
+    {isSrc:'4.jpg',height:400,width:1000},
+    {isSrc:'5.jpg',height:400,width:1000},
+    {isSrc:'6.jpg',height:400,width:1000},
+    {isSrc:'7.jpg',height:400,width:1000}
+        ]
+var data2 = [
+    {isSrc:'1.jpg',height:200,width:500},
+    {isSrc:'2.jpg',height:200,width:500},
+    {isSrc:'3.jpg',height:200,width:500},
+    {isSrc:'4.jpg',height:200,width:500},
+    {isSrc:'5.jpg',height:200,width:500},
+    {isSrc:'6.jpg',height:200,width:500},
+    {isSrc:'7.jpg',height:200,width:500},
+    {isSrc:'8.jpg',height:200,width:500},
+    {isSrc:'9.jpg',height:200,width:500}
+]
+var banner = utils.getElementsByClassName('banner');
+utils.Carousel(banner[0],data,2000,200);
+utils.Carousel(banner[1],data2);
+</script>
+</body>
+</html>

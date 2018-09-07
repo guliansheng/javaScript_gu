@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src='func.js'></script>
+	<style type="text/css">
+		#imgid{
+			position: fixed;
+			bottom: 10px;
+			right: 15px;
+			cursor: pointer;
+			display: none;
+			/*opacity: 0;*/
+			
+		}
+
+	</style>
+</head>
+<body>
+	<img src="images/top1.png" width='40px' height='40px' id='imgid'>
+
+	<h1>js代码</h1>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+</body> 
+<script type="text/javascript">
+imgobj=getId('imgid');
+imgobj.onmouseover=function(){
+	this.src='images/top2.png';
+}
+imgobj.onmouseleave=function(){
+	this.src='images/top1.png';
+}
+j=0;
+window.onscroll=function(){
+	if(isChrome()){
+		tops=document.body.scrollTop;
+	}
+	else{
+		tops=document.documentElement.scrollTop;
+	}
+	if(tops>=200){
+		imgobj.style.display='block';
+	}
+	else{
+		imgobj.style.display='none';
+	}
+	// if(tops>=200 && j<=1){
+	// 	s1=setInterval(function(){
+	// 	imgobj.style.opacity=j;
+	// 	j=j+0.1;
+	//     },100);	
+	//     // window.onscroll=function(){
+	//     // }    	
+	// }
+	// else if(tops<200 && j>1){
+	// 	s2=setInterval(function(){
+	// 	imgobj.style.opacity=j-0.1;
+	// 	j=j-0.1;			
+	//     },100);
+	// }	
+	// if(j==1.1){
+	//     clearInterval(s1);
+	// }
+	// else if(j==0.1){
+	// 	clearInterval(s2);
+	// }
+	if(tops<=0 && i>0){
+		clearInterval(s);
+	}
+}
+var i=0;
+imgobj.onclick=function(){
+	s=setInterval(function(){
+		if(isChrome()){
+			document.body.scrollTop-=10;
+		}
+		else{
+			document.documentElement.scrollTop-=10;
+			
+		}
+
+	},1);
+i++;		
+}
+</script>
+</html>

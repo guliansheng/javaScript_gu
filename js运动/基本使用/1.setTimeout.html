@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    var n = 0,timer=null;
+    function move(){
+        clearTimeout(timer);
+        n++;
+        console.log(n);
+        if (n === 5) {return;};
+        timer = setTimeout(move,1000);
+    }
+    move()
+</script>
+</html>

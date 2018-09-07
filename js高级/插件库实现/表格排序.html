@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+            font-family: "微软雅黑";
+            font-size:14px;
+            -webkit-user-select: none ;
+        }
+        .box{
+            width:400px;
+            padding:20px;
+            margin:50px auto;
+            border:1px solid #008000;
+            border-radius:10px;
+            box-shadow:3px 3px 10px 0 #dbeedb;
+        }
+        .box thead{
+            background:#008000;
+        }
+        .box thead tr{
+            height:35px;
+            color:#fff;
+        }
+        .box thead tr th{
+            width:100px;
+            text-align: center;
+        }
+        .box thead tr th.cursor{
+            cursor:pointer;
+        }
+        .box tbody tr{
+            height:30px;
+        }
+        .box tbody tr:nth-child(2n){
+            background:lightgreen
+        }
+        .box tbody tr td{
+            width:100px;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <table id="tab" cellpadding="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th class="cursor">年龄 <span style="font-size: 0.5em;">&#9660;</span></th>
+                    <th class="cursor">武力值  <span style="font-size: 12px;">&#9660;</span></th>
+                    <th>性别</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>周瑜</td>
+                    <td>45</td>
+                    <td>89</td>
+                    <td>男</td>
+                </tr>
+                <tr>
+                    <td>小乔</td>
+                    <td>24</td>
+                    <td>78</td>
+                    <td>女</td>
+                </tr>
+                <tr>
+                    <td>黄月英</td>
+                    <td>34</td>
+                    <td>81</td>
+                    <td>女</td>
+                </tr>
+                <tr>
+                    <td>吕布</td>
+                    <td>36</td>
+                    <td>99</td>
+                    <td>男</td>
+                </tr>
+                <tr>
+                    <td>孙尚香</td>
+                    <td>28</td>
+                    <td>76</td>
+                    <td>女</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

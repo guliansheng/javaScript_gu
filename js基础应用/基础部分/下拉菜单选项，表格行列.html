@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	#sorder{
+		width: 30px;
+	}
+	#rows{
+		width: 30px;
+	}
+	#cells{
+		width: 30px;
+	}
+	td{
+		text-align: center;
+	}
+	*{
+		font-family: 微软雅黑;
+	}
+	</style>
+</head>
+<body>
+	<input type="button" value="刷新" id='bid'>
+	<select id="sid">
+		<option value="选择城市">选择城市</option>
+		<option value="北京" order='3'>北京</option>
+		<option value="上海" order='45'>上海</option>
+		<option value="天津" order='24'>天津</option>
+	</select>
+	<p>城市排名：第<input type="text" id='sorder'>名</p>
+	<br>
+	<p><table border="1px" cellspacing="0" width="300px" id='tid'>
+			<tr>
+				<td>111</td>
+				<td>111</td>
+				<td>111</td>
+			</tr>
+			<tr>
+				<td>111</td>
+				<td>111</td>
+				<td>111</td>
+			</tr>
+			<tr>
+				<td>111</td>
+				<td>111</td>
+				<td>111</td>
+			</tr>
+			<tr>
+				<td>111</td>
+				<td>111</td>
+				<td>111</td>
+			</tr>
+	</table></p>
+	<form action="javascript:">
+	<p>第<input type="text" placeholder="行" id='rows'>行</p>
+	<p>第<input type="text" placeholder="列" id='cells'>列</p>
+	<p><input type="text" placeholder="改变的值" id='valid'></p>
+	<p><input type="button" value="确认" id='commit'></p>
+	</form>
+	
+</body>
+<script type="text/javascript">
+bidobj=document.getElementById('bid');
+bidobj.onclick=function(){
+	location.reload();//location.reload()方法，刷新作用；
+}
+sorderobj=document.getElementById('sorder');
+sobj=document.getElementById('sid');
+
+sobj.onchange=function(){	
+	idx=sobj.selectedIndex;
+	opts=sobj.options;
+	//如果要获取用户自定义的下拉菜单属性，必须用该方法才能获取该属性；
+	sorderobj.value=opts[idx].getAttribute('order');
+	//getAattribute('')用于获取用户自定义属性；setAattribute('' ,'' );用于设置用户自定义属性值；
+}
+tidobj=document.getElementById('tid');
+rowsobj=document.getElementById('rows');
+cellsobj=document.getElementById('cells');
+commitobj=document.getElementById('commit');
+validobj=document.getElementById('valid');
+commitobj.onclick=function(){
+	if(rowsobj.value>4||cellsobj.value>3){
+		alert('输入的行或列错误！');
+	}
+	else{
+	set(rowsobj.value,cellsobj.value,validobj.value);
+	}	
+}
+function set(i,j,value){
+	tidobj.rows[i-1].cells[j-1].innerHTML=value;
+}
+</script>
+</html>

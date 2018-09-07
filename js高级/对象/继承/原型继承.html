@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+function A(){
+    this.name = 'this is A';
+}
+A.prototype.getName = function(){
+    console.log(this.name)
+}
+function B(){
+    this.name = 'this is B';
+}
+console.log(new A);
+B.prototype = new A;
+B.prototype.constructor = B;
+console.dir(B)
+var b = new B;
+console.dir(b.getName())
+</script>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    //借用数组的方法,只能是类数组可以这样借用
+    function avgFn(){
+        Array.prototype.sort.call(arguments,function(a,b){return a-b});
+        [].splice.call(arguments,0,1);
+        [].splice.call(arguments,this.length-1,1);
+        console.log(arguments);
+        console.log((eval([].join.call(arguments,'+'))/arguments.length).toFixed(1))//保留几位小数点,会四舍五入
+
+    }
+
+    //将类数组克隆到一个新数组中,再操作这个数组
+    function avgFn2(){
+        var newarg = Array.prototype.slice.call(arguments);
+        newarg = [].slice.call(arguments);//和上面的意思相同;
+        newarg.sort(function(a,b){return a-b});
+        newarg.splice(0,1);
+        newarg.splice(newarg.length-1,1);
+        console.log(newarg);
+        console.log(eval(newarg.join("+"))/newarg.length);
+        console.log(arguments);
+    }
+    avgFn(45,3.4,3,23,5.6,46,32.2)
+    avgFn2(45,3.4,3,23,5.6,46,32.2)
+</script>
+</html>

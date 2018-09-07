@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <script src="[自]move.js"></script>
+    <style type="text/css">
+        .div{
+            width:100px;
+            height:100px;
+            background-color:#456789;
+        }
+    </style>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <div class="div"></div>
+</body>
+<script>
+    let odiv=document.querySelector('.div');
+    var timer;//存放定时器变量;
+    var speed=10;
+    function move(){
+        clearInterval(timer);//清除已有的定时器,防止出现多个定时器同时存在;
+        timer=setInterval(function(){
+            var regRule=parseInt(getTranslate(odiv,'Y'))||parseInt(getTranslate(odiv,'X'));
+            console.log(regRule)
+            if(regRule>= 300){
+                clearInterval(timer);
+            }
+            else{
+                odiv.style.transform='translateX('+speed+'px)';
+                speed+=10;
+            }
+        },30);
+    }
+    odiv.onclick=move;
+</script>
+</html>

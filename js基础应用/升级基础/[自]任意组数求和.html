@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    function sum(){
+        var total=null;
+        for(var i=0;i< arguments.length;i++){
+            var cur=Number(arguments[i]);
+            !isNaN(cur)?total+=cur : null;
+        }
+        console.log(total);
+    }
+    sum(10,20,30);
+    sum();
+    sum(10,20,'30');
+    sum(10,20,30,'珠峰');
+</script>
+</html>

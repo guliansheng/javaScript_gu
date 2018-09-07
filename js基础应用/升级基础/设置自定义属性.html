@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div class="box1"></div>
+<div class="box2"></div>
+<div class="box3"></div>
+</body>
+<script type="text/javascript">
+//一.使用xxx.index=0和xxx.setAttribute('index',0)这两种设置自定义属性的区别？
+//
+//1.xxx.index：是把当前操作的元素当做一个普通对象，为其设置一个属性名,和页面中的HTML标签没关系,不会在dom元素身上显示,但是可以在
+//2.xxx.setAttribute：把元素当做特殊的元素对象来处理，设置的自定义属性是和页面结构中的DOM元素映射在一起的
+//二.JS中获取的元素对象，我们可以把它理解为两种角色；
+//与页面HTML结构无关的普通对象-与页面HTML结构存在映射关系的元素对象元素对象中的内置属性，大部分都和页面的标签存在映射关系：
+//1.xxx.style.backgroundColor=xxx'此时不仅把JS中对象对应的属性值改变了，而且也会映射到页面的HTML标签上（标签中有一个style行内样式、元素的样式改变了）
+//2.xxx.className='xxx’此时不仅是把S对象中的属性值改了，而且页面中的标签增加了class样式类（可以看见的）
+var box1 = document.querySelector('.box1')
+var box2 = document.querySelector('.box2')
+var box3 = document.querySelector('.box3')
+box1.index = 1;
+box2.setAttribute('index',2);
+console.log(box1.index)
+console.log(box2.getAttribute('index'))
+</script>
+</html>

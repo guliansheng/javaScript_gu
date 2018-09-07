@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .carousel{
+            width:800px;
+            height:300px;
+            background:#ccc;
+            margin:100px auto;
+            position:relative;
+            overflow: hidden;
+        }
+        .img{
+            height:1200px;
+            width:100%;
+            position: absolute;
+            top: 0;
+        }
+        .carousel ul{
+            list-style:none;
+            padding: 0;
+            margin:0;
+            top: 0;
+        }
+        .img li {
+            height: 300px;
+            overflow: hidden;
+        }
+        .order{
+            width:130px;
+            height: 25px;
+            position: absolute;
+            bottom:30px;
+            right:50px;
+        }
+        .order ul{
+            display: flex;
+        }
+        .order ul li{
+            flex:1;
+            text-align: center;
+            line-height: 25px;
+            background:#fff;
+            color:rgb(226, 91, 13);
+            border-radius:5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .order li+li{
+            margin-left:10px;
+        }
+        .order .active{
+            color:#fff;
+            background:rgb(226, 91, 13);
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel">
+        <div class="img">
+            <ul>
+                <li><img src="img/1.jpg" alt="" width="800px" height="300px"></li>
+                <li><img src="img/2.jpg" alt="" width="800px" height="300px"></li>
+                <li><img src="img/3.jpg" alt="" width="800px" height="300px"></li>
+                <li><img src="img/4.jpg" alt="" width="800px" height="300px"></li>
+            </ul>
+        </div>
+        <div class="order">
+            <ul>
+                <li class="active">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+    let orderLi=document.querySelectorAll('.order li');
+    let img=document.querySelector('.img');
+    img.style.top=0;
+    ~function go(){
+        let stop=setInterval(function(){
+            // console.log(parseInt(img.style.top));
+            if(parseInt(img.style.top)==-900){
+                back();
+                return false;
+            }
+            let transY=parseInt(img.style.top);
+            let i=transY;
+            console.log(i);
+            let start=setInterval(function(){
+                i-=3;
+                if(i<=transY-300){
+                    clearInterval(start);
+                }
+                img.style.top=i+'px';
+            },10);
+            if(i==0){
+                for(let i=0;i<orderLi.length;i++){
+                    orderLi[i].className='';
+                }
+                orderLi[Math.abs(i/300)+1].className='active';
+            }
+            else if(i==-300){
+                for(let i=0;i<orderLi.length;i++){
+                    orderLi[i].className='';
+                }
+                orderLi[Math.abs(i/300)+1].className='active';
+            }
+            else if(i==-600){
+                for(let i=0;i<orderLi.length;i++){
+                    orderLi[i].className='';
+                }
+                orderLi[Math.abs(i/300)+1].className='active';
+            }
+            console.log(i);
+        },3000);
+    }();
+    function back(){
+        let j=parseInt(img.style.top);
+        let stop=setInterval(function(){
+            j+=10;
+            if(parseInt(img.style.top)>=-10){
+                clearInterval(stop);
+            }
+            img.style.top=j+'px';
+            // console.log(j);
+        },10);
+        for(let i=0;i<orderLi.length;i++){
+            orderLi[i].className='';
+        }
+        orderLi[0].className='active';
+    }
+</script>
+</html>

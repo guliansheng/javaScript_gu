@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+
+</body>
+<script type="text/javascript" src="jquery-3.1.1.js"></script>
+<script type="text/javascript">
+    function fn1(val){
+        console.log("fn1:" + val)
+    }
+    function fn2(val){
+        console.log("fn2:" + val)
+    }
+    var $call = $.Callbacks();
+    $call.add(fn1)
+    $call.add(fn2)
+    $call.fire( 'world' );
+    $call.remove(fn1);
+    $call.fire(199);
+</script>
+</html>

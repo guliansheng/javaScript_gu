@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+
+//数组去重:遍历数组每一项,把每一项作为对象的属性名和属性值存储起来,例如,当前项是1,对象中存储为{1:1}
+arr4 = [1,1,4,45,89,4,7,43,46,45,'值','值','名字','名字'];
+var obj = {};
+for (var i = 0; i < arr4.length; i++){
+    var cur = arr4[i];
+    if (typeof obj[cur] !== 'undefined'){
+        arr4.splice(i,1);
+        i--;
+        continue;
+    }
+    obj[cur] = cur;
+}
+console.log(arr4);
+
+
+//链式写法：执行完成数组的一个方法可以紧接着执行下一个方法
+//原理：
+//arr为什么可以使用sort方法?->因为sort是Array.prototype上的公有的方法,而数组arr是Array这个类的一个实例,所以arr可以使用sort方法 -> 数组才能使用我们Array原型上定义的属性和方法
+//sort执行完成的返回值是一个排序后的数组"，可以继续执行reverse
+//reverse执行完成的返回值是一个数组，可以继续执行pop
+//pop执行完成的返回值是被删除的那个元素，不是一个数组,所以再次执行push会报错
+    Array.prototype.myUnique = function myUnique(){
+        var obj = {};
+        for (var i = 0; i < this.length; i++){
+            var item = this[i];
+            if (typeof obj[item] !== 'undefined'){
+                this[i] = this[this.length-1];
+                this.length--;
+                i--;
+                continue;
+            }
+            obj[item] = item;
+        }
+        obj = null;
+        return this;//为了实现链式写法
+    }
+    arr = ['这是什么','nishi','你是谁','jiansheng',89,'这是什么','nishi',89,'jiansheng']
+    arr.myUnique();
+    console.log(arr);
+    arr2 = [33,34,54,34,22,67,54,34,23,11,33,22,45,66,43,23,65,56,74,32,34]
+    console.log(arr2.myUnique().sort(function(a,b){return a-b}));
+</script>
+</html>

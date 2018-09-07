@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+function Fn(){
+    var num = 500;
+    this.x = 100;
+}
+Fn.prototype.getX = function(){
+    console.log(this.x);
+}
+Fn.aaa = 1000;
+var f = new Fn;//Fn中的this是f
+console.log(f.num);
+console.log(f.aaa);
+console.log(f.x);
+var res = Fn();//Fn中的this是window
+console.log(res);
+console.log(Fn.aaa);
+</script>
+</html>

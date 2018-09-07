@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="Chinese">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	*{
+		margin: 0px;
+		padding: 0px;
+		font-family: 微软雅黑;
+	}
+	ul,li{
+		list-style:none;
+	}
+	.tab{
+		width:600px;
+		margin:40px auto;
+	}
+	.tab>ul>li{
+		position:relative;
+		top:1px;
+		box-sizing:border-box;
+		float:left;
+		margin-left:15px;
+		width:100px;
+		height:35px;
+		line-height:35px;
+		text-align:center;
+		border:1px solid #ccc;
+		cursor: pointer;
+		background: #fff;
+	}
+	.tab ul li.select{
+		border-bottom: 1px solid lightskyblue;
+		border-top: 2px solid #444;
+		background:lightskyblue;
+	}
+	.tab>div{
+		clear:both;
+		height:200px;
+		width:600px;
+		display:none;
+		border:1px solid #ccc;
+		background:lightskyblue;
+		line-height:200px;
+		text-align:center;
+	}
+	.tab>div>div{
+		width:100%;
+		height:50px;
+		line-height:50px;
+	}
+	.tab > div.select{
+		display:block;
+	}
+</style>
+<body>
+	<div class="tab">
+		<ul>
+		    <li class="select">tab1</li>
+		    <li>tab2</li>
+		    <li>tab3</li>
+		</ul>
+		<div>
+			<div class="select">1</div>
+			<div>1</div>
+			<div>1</div>
+		</div>
+		<div>内容二</div>
+		<div>内容三</div>
+	</div>
+	<div class="tab">
+		<ul>
+		    <li>tab1</li>
+		    <li>tab2</li>
+		    <li>tab3</li>
+		</ul>
+		<div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+		</div>
+		<div>内容二</div>
+		<div>内容三</div>
+	</div>
+	<div class="tab">
+		<ul>
+		    <li>tab1</li>
+		    <li>tab2</li>
+		    <li>tab3</li>
+		    <li>tab4</li>
+		</ul>
+		<div>
+			<div>1</div>
+			<div>1</div>
+			<div>1</div>
+		</div>
+		<div>内容二</div>
+		<div>内容三</div>
+		<div>内容四</div>
+	</div>
+</body>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+var tab = utils.getElementsByClassName('tab');
+utils.tab(tab[0],1,'onclick')
+utils.tab(tab[1],2,'onmouseover')
+utils.tab(tab[2])
+</script>
+</html>

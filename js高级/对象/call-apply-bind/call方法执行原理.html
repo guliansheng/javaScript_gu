@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+var obj = {name:'gu'};
+function fn(){
+    console.log(this);
+}
+// obj.fn() //=>报错
+fn.call(obj);
+
+// call 方法:
+// 首先我们让原型的call方法执行,在执行call方法时,我们让fn中的this变为第一个参数值obj;然后再把fn这个函数执行;
+
+</script>
+</html>

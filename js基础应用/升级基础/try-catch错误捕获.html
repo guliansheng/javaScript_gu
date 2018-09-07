@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+//try-catch捕获异常信息,不影响下面代码执行;如果try中代码出现错误,会默认执行catch中的代码,finally无论代码有没有出错都会执行
+
+try{
+	for(var i = 0; i < 0; i++){}
+	for(j;j<0;j++){}
+}
+
+
+catch(e){//这里同样可以用于替换可能出现错误的代码,例如有些语法在ie6~8中不兼容会出现错误,这时可以将兼容代码写到catch中
+
+    console.dir(e);
+	console.log('出现错误'+e.message)
+
+    throw new Error("代码出错:"+e); //手动抛出错误,终止代码执行 ; 如果手动抛出了错误,后面的console.log('这是后面的代码')代码就不会执行了,用于上下文代码有关联时,当错误发生既想捕获错误,又想代码终止执行时,如果没有这段代码,后面的代码可以继续执行
+
+    //常用Error
+    //1.new ReferenceError -> 引用错误
+    //2.new TypeError -> 类型错误
+    //3.new RangeError -> 范围错误
+}
+
+
+finally{//一般不用
+	console.log('jieshu');
+}
+console.log('这是后面的代码')
+</script>
+</html>

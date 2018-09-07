@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src='js/jquery.min.js'></script>
+	<style type="text/css">
+		.Drag{
+			width: 200px;
+			height: 200px;
+			background: #ccc;
+			position: absolute;
+			top:200px;
+			left: 500px;
+		}
+		.drog{
+			position: relative;
+			width: 200px;
+			height: 300px;
+			background: #f0f;
+			top:100px;
+			left: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div class="Drag"></div>
+	<div class="drog"></div>
+</body>
+<script>
+var dx='外层dx';
+~function(){
+	let maxX=document.documentElement.clientWidth;
+	let maxY=document.documentElement.clientHeight;
+	let DX=$('.Drag')[0].offsetWidth;
+	let DY=$('.Drag')[0].offsetHeight;
+	let dx=$('.drog')[0].offsetWidth;
+	let dy=$('.drog')[0].offsetHeight;
+	$('.Drag').mousedown(function (event) {
+		this.style.zIndex=2;
+		$(this).next().css({'zIndex':1});
+		Top=parseInt($('.Drag').css('top'));
+		Left=parseInt($('.Drag').css('left'));
+		x1=event.clientX;
+		y1=event.clientY;
+		$(document).bind('mousemove',function(event){
+			event.preventDefault();//阻止浏览器默认行为
+			x2=event.clientX;
+			y2=event.clientY;
+			x=x2-x1;
+			y=y2-y1;
+			l=Math.min(maxX-DX,Math.max(0,Left+x));
+			t=Math.min(maxY-DY,Math.max(0,Top+y));
+			$('.Drag').css({'top':t+'px','left':l+'px'});
+			if($('.Drag').offset().left < $('.drog').offset().left + dx && $('.Drag').offset().left + DX > $('.drog').offset().left && $('.Drag').offset().top < $('.drog').offset().top + dy && DY + $('.Drag').offset().top > $('.drog').offset().top){
+				console.log('撞上了')
+			}
+		});
+	});
+	$('.drog').click(function(){
+		this.style.zIndex=2;
+		$(this).prev().css({'zIndex':1});
+	})
+	$(document).mouseup(function(){
+		$(document).unbind('mousemove');
+	});
+	//可以使用该方式取消事件;
+	// document.onmouseup=function(){
+	// 	document.onmousemove=document.onmouseup=null;
+	// }
+}();
+console.log(dx);
+</script>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div id="box1">第一个</div>
+<div id="box1">第二个</div>
+</body>
+<script type="text/javascript">
+// 直接用document.getElementByld 获取,只能获取到第一个id=box1的元素
+console.log(document.getElementById('box1'))
+var allList = document.getElementsByTagName('*'),
+    result = [];
+for (var i = 0 ; i < allList.length;i++){
+    var item = allList[i];
+    item.id==='box1'? result.push(item):null;
+}
+console.log(result);
+</script>
+</html>

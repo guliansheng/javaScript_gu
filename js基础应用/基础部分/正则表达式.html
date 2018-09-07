@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+	//元字符和量词
+	arr = 'php and p3p paaaaap adp pdp and prrrrrp and p4p and utj and dud andp4p and prp';
+	arr2 = arr.match(/p.p/ig);
+	document.write('<h3>' + arr2 + '</h3>');
+
+
+	//匹配电话号码
+	phone = '18815689115';
+	if (phone.match(/^188\d{4}9115$/i)) {
+		document.write('<h3>' + '号码正确' + '</h3>');
+	} else {
+		document.write('<h3>' + '号码错误' + '</h3>');
+	}
+	//邮箱格式匹配
+	email = '1229303942@qq.cn';
+	if (email.match(/^\w+@\w+\.(com|cn)$/ig)) {
+		document.write('<h3>' + '邮箱格式正确' + '</h3>');
+	} else {
+		document.write('<h3>' + '邮箱格式错误' + '</h3>');
+	}
+
+	//日期格式更换
+
+	date = '2017/05/04';
+	date2 = date.replace(/\/+/g, '-'); //方法一；
+	document.write('<h3>' + date2 + '</h3>');
+	date3 = date.replace(/(\d+)\/(\d+)\/(\d+)/g, '$1-$2-$3'); //方法二；$向后引用
+	document.write('<h3>' + date3 + '</h3>');
+</script>
+
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    var reg = /\d/;
+    console.log(reg.test('zhu')); //->false
+    console.log(reg.test('1')); //->true
+    console.log(reg.test('zhufeng01')); //->true
+    console.log(reg.exec('zhu')); //->null
+    console.log(reg.exec('1')); //-> 1
+
+</script>
+</html>

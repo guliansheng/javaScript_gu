@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    //Object.create（proObj）创建一个新的对象，但是还要把proObj作为这个对象的原型 (在IE6～8不兼容)
+    var obj = {
+        getX:function(){
+        }
+    }
+    function object(o){
+        function Fn(){}
+        Fn.prototype = o;
+        return new Fn;
+    }
+    var newobj=object(obj);
+</script>
+</html>

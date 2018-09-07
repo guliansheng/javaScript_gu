@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+var n=2;
+var obj={
+    n:3,
+    fn:(function(n){
+        n*=2;
+        this.n+=2;//自执行函数中的this指向window
+        var n=5;//n已经是传进来的实参,不需要再次定义,直接赋值为5
+        return function(m){
+            this.n*=2;//这里的this暂且未知
+            console. log(m+(++n));
+        };
+    })(n)
+}
+var fn = obj.fn;
+fn(3);//这里执行的返回函数中的n是自执行函数中的n,因为返回函数实在自执行函数中定义的,上级作用域就是自执行函数
+obj.fn(3);
+console.log(n,obj.n);
+</script>
+</html>

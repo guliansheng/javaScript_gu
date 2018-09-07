@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <style type="text/css">
+    body,ul{
+        margin:0;
+        padding:0;
+    }
+        .news{
+            width:300px;
+            border:1px solid pink;
+            margin:50px auto;
+
+        }
+        .news ul{
+            list-style:none;
+            display:flex;
+            flex-direction:column;
+        }
+        .news ul li{
+            width:100%;
+            height:35px;
+            line-height:25px;
+            padding:5px 10px;
+            box-sizing:border-box;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            white-space:nowrap;
+            font-size:14px;
+        }
+        .news ul li span{
+            display:inline-block;
+            width:20px;
+            height:15px;
+            background:#a60;
+            color:#fff;
+            text-align:center;
+            margin:0 5px;
+            border-radius:50%;
+            line-height:15px;
+        }
+        .news ul li:hover{
+            background:pink;
+            background-clip:content-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="news">
+        <ul>
+            <li><span>1</span>sfalksdfalskfjlkafgdswerterteriwtpetrtewrt</li>
+            <li><span>2</span>sfalksdfalskfjlkasertwertwertwertwertewrt</li>
+            <li><span>3</span>sfalksdfalskfjlkaswertwertwetwetrwetwer</li>
+        </ul>
+    </div>
+</body>
+<script type="text/javascript">
+    ary =[
+        {title:'习近平在“黄金之城”的十个金句',desc:'习近平在“黄金之城”的十个金句习近平在“黄金之城”的十个金句习近平在“黄金之城”的十个金句'},
+        {title:'中国智慧照亮“金砖”未来 各界积极评价',desc:'中国智慧照亮“金砖”未来 各界积极评价中国智慧照亮“金砖”未来 各界积极评价中国智慧照亮“金砖”未来 各界积极评价'},
+        {title:'IMF发布中国经济年度报告：中国经济继续表现强劲',desc:'IMF发布中国经济年度报告：中国经济继续表现强劲IMF发布中国经济年度报告：中国经济继续表现强劲IMF发布中国经济年度报告：中国经济继续表现强劲'},
+        {title:'经济日报：扩大共同繁荣的朋友圈',desc:'经济日报：扩大共同繁荣的“朋友圈”经济日报：扩大共同繁荣的“朋友圈”经济日报：扩大共同繁荣的“朋友圈”'},
+        {title:'2800多企业 80国和3个国际组织将亮相进口博览会',desc:'2800多企业 80国和3个国际组织将亮相进口博览会2800多企业 80国和3个国际组织将亮相进口博览会2800多企业 80国和3个国际组织将亮相进口博览会'}
+    ]
+    var onews = document.getElementsByClassName('news')[0];
+    var oul = onews.getElementsByTagName('ul')[0];
+
+    //1.创建元素对象插入到html中
+    // -> 优势 : 对原来的元素没有影响
+    // -> 弊端 : 每当创建一个li就添加到页面中,引发一次DOM回流,最后引发回流次数过多,影响性能
+    // for (var i = 0; i < ary.length; i++) {
+    //     var newli = document.createElement("li");
+    //     newli.innerHTML = `<span>${i+4}</span>${ary[i].title}`
+    //     oul.appendChild(newli);
+    // };
+
+
+    //2.字符串拼接方式
+    // -> 弊端 : 这种方式会将原有元素身上绑定的事件会消失
+    // -> 优势 : 项目中常用字符串拼接,而不是动态创建元素,实现把内容拼接好,直接添加到页面中,只引发一次回流
+    // var str = '';
+    // for (var i = 0; i < ary.length; i++) {
+    //     var cur = ary[i];
+    //     str += `<li><span>${i+4}</span>${ary[i].title}</li>`
+    // };
+    // oul.innerHTML += str;
+
+
+    //3.文档碎片
+    // -> 这种方式是创建一个临时容器存放元素对象,最后一次进追加到页面中
+    // -> 既不会影响原来的元素,同时只引发一次回流
+    // -> ie6~8不支持
+    var frg = document.createDocumentFragment();//创建一个文档碎片,相当于临时创建了一个容器
+    var child = null
+    while(child = oul.firstChild){
+        frg.appendChild(child)
+    }
+    for (var i = 0; i < ary.length; i++) {
+        var newli = document.createElement("li");
+        newli.innerHTML = "<span>"+ (i+4) + "</span>"+ary[i].title;
+        frg.appendChild(newli);
+    };
+    console.dir(frg.childNodes[1])
+    oul.appendChild(frg);
+</script>
+</html>

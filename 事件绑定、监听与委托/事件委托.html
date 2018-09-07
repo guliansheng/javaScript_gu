@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <ul id="list">
+            <li id="item1" >item1</li>
+            <li id="item2" >item2</li>
+            <li id="item3" >item3</li>
+        </ul>
+
+        <script>
+        //利用事件的冒泡机制(触发当前元素的某个行为,他父级所有元素的相关行为都会触发),如果一个容器中有很多元素都绑定点击事件,我们没必要一个个的绑定了,只需要给最外层容器绑定一个点击事件即可,在这个方法执行的时候,通过事件源的区分来进行不同的操作;
+        var list = document.getElementById("list");
+        document.addEventListener("click",function(event){
+            var target = event.target;//event.target返回触发该事件的元素；
+            if(target.tagName == "LI"){//当元素为li标签时（tagName和nodeName都可以）
+                //TODO
+                alert(target.innerHTML);
+            }
+        })
+        var node=document.createElement("li");
+        node.innerHTML='这还少';
+        list.appendChild(node);
+        </script>
+</body>
+</html>

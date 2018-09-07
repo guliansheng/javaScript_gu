@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style type="text/css">
+        a{
+            display:block;
+            width:80px;
+            height:40px;
+            background:#ccc;
+            margin:10px 40px;
+        }
+    </style>
+</head>
+<body id="body">
+    <h3>通过在链接中添加 # 来设置hash值 , hash值在页面刷新时不会发生变化,hash即是当前URL中的锚点</h3>
+    <a href="#/all">所有任务</a>
+    <a href="#/finish">已完成</a>
+    <a href="#/unfinish">未完成</a>
+</body>
+<script type="text/javascript">
+//这种方式只是在未上线时使用,上线后使用h5的history.pushState
+window.onload=hash;
+//onhashchange 当hash改变时发生的事件
+window.addEventListener('hashchange', hash)
+function hash(){
+    if(location.hash.slice(2)=='all'){
+        body.style.background='red';
+    }
+    else if(location.hash.slice(2)=='finish'){
+        body.style.background='blue';
+    }
+    else if(location.hash.slice(2)=='unfinish'){
+        body.style.background='yellow';
+    }
+    else{
+        window.location.hash='/all'
+    }
+    console.log(window.location.hash.slice(2));
+}
+</script>
+</html>

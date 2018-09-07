@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+        #ibox{
+            width: 300px;
+            height:150px;
+            background:#ccc;
+            margin:50px auto;
+            border:10px solid green;
+            padding:10px;
+            transform:translate(30px,40px);
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="ibox">近日简氏防务周刊发表了一篇关于全球第六代战机的文章，文中提到，中国在六代机的研发进展已经与美国处于同一水平，甚至还要更胜一筹。据悉中国第六代战机各方面将全面超越歼20，性能上具有革命性的提升。近年来中国航空工业得到迅猛提升，各型战机更是如雨后春笋般的发展，短短数十年就赶上美俄传统航空强国几十年的发展历程。近日简氏防务周刊发表了一篇关于全球第六代战机的文章，文中提到，中国在六代机的研发进展已经与美国处于同一水平，甚至还要更胜一筹。据悉中国第六代战机各方面将全面超越歼20，性能上具有革命性的提升。近年来中国航空工业得到迅猛提升，各型战机更是如雨后春笋般的发展，短短数十年就赶上美俄传统航空强国几十年的发展历程。</div>
+</body>
+<script type="text/javascript">
+    var obox = document.getElementById('ibox');
+    console.dir(obox)
+
+    //获取元素对象的css属性,可以获取到所有属性,包括设置了和没设置的属性,第一个参数是要操作的对象,第二个是伪类,在ie6~8下不兼容
+    var oboxtransf = window.getComputedStyle(obox,null).transform
+    console.log(oboxtransf)
+    var reg = /(\d+), (\d+), (\d+), (\d+), (\d+), (\d+)/g , arr = [];
+    oboxtransf.replace(reg,function(){
+        console.log(arguments)
+        arr = arguments[0].split(", ")
+        console.log(arr)
+    })
+    // console.log(window.getComputedStyle(obox,"after").height);//如果obox有伪类,则可以获取到伪类的样式
+    //ie6~8下获取
+    console.log(obox.currentStyle);
+</script>
+</html>

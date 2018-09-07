@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    var reg = /^\d$/;  //只能是一个数字
+    console.log(reg.test('8'));//true
+    console.log(reg.test('844'));//false
+    console.log("------------")
+
+
+    reg = /^\d+$/; //1到多个数字,并且开头结尾都是数字
+    console.log(reg.test('3049'));
+    console.log(reg.test('f3049'));
+    console.log("------------")
+
+    // | 元字符
+    reg = /^18|19$/;
+    console.log(reg.test("181"))
+    console.log(reg.test("1819"))
+    console.log(reg.test("189"))
+    console.log(reg.test("19"))
+    console.log(reg.test("119"))
+    console.log(reg.test("18"))
+    console.log(reg.test("181"))
+    console.log("------------")
+
+
+    // ()改变 | 原来的优先级
+    reg = /^(18|19)$/;
+    console.log(reg.test("181"))
+    console.log(reg.test("1819"))
+    console.log(reg.test("189"))
+    console.log(reg.test("119"))
+    console.log(reg.test("19"))
+    console.log(reg.test("18"))
+    console.log(reg.test("181"))
+    console.log("------------")
+</script>
+</html>

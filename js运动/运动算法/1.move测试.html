@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box1{
+            width:100px;
+            height:100px;
+            background:#b1b1b1;
+            position:absolute;
+            top: 0;
+            left:0;
+        }
+        #box2{
+            width:100px;
+            height:100px;
+            background:#b1b1b1;
+            position:absolute;
+            top: 150px;
+            left:0;
+        }
+        #box3{
+            width:100px;
+            height:100px;
+            background:#b1b1b1;
+            position:absolute;
+            top: 300px;
+            left:0;
+        }
+        #box4{
+            width:100px;
+            height:100px;
+            background:#b1b1b1;
+            position:relative;
+            top: 450px;
+            left:0;
+            opacity:0;
+        }
+    </style>
+</head>
+<body>
+<div id="box1"></div>
+<div id="box2"></div>
+<div id="box3"></div>
+<div id="box4"></div>
+</body>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript" src="move.js"></script>
+<script type="text/javascript">
+~function(){
+    var box1 = document.getElementById('box1');
+    var target = utils.win("clientWidth") - box1.offsetWidth;//总路程
+    var time = 1000;//规定多长时间完成
+    var step = (target/time)*10;//计算步长,5是每个多少时间执行一次定时器
+    var timer = setInterval(function(){
+        var curLeft = utils.css(box1,"left");
+        if (curLeft >= target) {
+            clearInterval(timer);
+            return;
+        }
+        curLeft += step;
+        utils.css(box1,"left",curLeft);
+    },10)
+}();
+~function(){
+    var box2 = document.getElementById('box2');
+    var target = utils.win("clientWidth") - box2.offsetWidth;//总路程
+    var step = 5;//规定步长
+    var timer = setInterval(function(){
+        var curLeft = utils.css(box2,"left");
+        if (curLeft + step >= target) {//对于边界步长的判断,如果加上步长超过边界,直接跳到目标位置;
+            clearInterval(timer);
+            utils.css(box2,"left",target);
+            return;
+        }
+        curLeft += step;
+        utils.css(box2,"left",curLeft);
+    },10)
+}();
+~function(){//使用递归思想实现
+    var box3 = document.getElementById('box3');
+    var target = utils.win("clientWidth") - box3.offsetWidth;//总路程
+    var step = 5;//规定步长
+    var timer = null;
+    function move(){
+        clearTimeout(timer)//清除之前没用的定时器;
+        var curLeft = utils.css(box3,"left");
+        if (curLeft + step >= target) {
+            clearTimeout(timer);
+            utils.css(box3,"left",target);
+            return;
+        }
+        curLeft += step;
+        utils.css(box3,"left",curLeft);
+        timer = setTimeout(move,10);
+    }
+    move();
+}();
+
+var box4 = document.getElementById('box4');
+var left = 1000
+console.log('left:' + left);
+var top = 200
+animate(box4,{left:left,top:top,width:20,height:20,opacity:1},2000)
+</script>
+</html>

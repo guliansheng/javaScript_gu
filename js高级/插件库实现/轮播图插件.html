@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    *{margin: 0px;padding: 0px;}
+    .banner{
+        margin:40px auto;
+        background: #ccc;
+        position: relative;
+        cursor: pointer;
+        overflow: hidden;
+        background:url('bgimg.gif') #f2f2f2 no-repeat 50% 50%;
+    }
+    .banner-content{
+        position:relative;
+        overflow:hidden;
+    }
+    .banner-content img{
+        float: left;
+    }
+    .pointer-left,.pointer-right{
+        width: 30px;
+        height: 50px;
+        position: absolute;
+        top: 50%;
+        opacity: 0;
+        margin-top:-25px;
+    }
+    .pointer-left{
+        left:20px;
+    }
+    .pointer-right{
+        right:20px;
+    }
+    .pointer-right:hover{opacity: 0.9!important;}
+    .pointer-left:hover{opacity: 0.9!important;}
+    .banner:hover .pointer{opacity: 0.5;}
+    .banner-dot{
+        height: 12px;
+        position: absolute;
+        right:30px;
+        bottom:30px;
+    }
+    .banner-dot li{
+        width: 10px;
+        height: 10px;
+        border: solid 2px #fff;
+        border-radius:10px;
+        float: left;
+        list-style: none;
+        margin-right: 13px;
+        background: #ccc;
+    }
+    .banner-dot li.on{
+        background:#ff8101;
+    }
+    </style>
+</head>
+<body>
+<div class="banner">
+    <div class="banner-content">
+        <img src="1.jpg" height="400" width="1000">
+        <img src="2.jpg" height="400" width="1000">
+        <img src="3.jpg" height="400" width="1000">
+        <img src="4.jpg" height="400" width="1000">
+    </div>
+    <ul class="banner-dot">
+        <li class="on"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div class="pointer-left pointer"><img src="prev.png" alt="" width='30' height='50'></div>
+    <div class="pointer-right pointer"><img src="next.png" alt="" width='30' height='50'></div>
+</div>
+<div class="banner">
+    <div class="banner-content">
+        <img src="1.jpg" height="200" width="500">
+        <img src="2.jpg" height="200" width="500">
+        <img src="3.jpg" height="200" width="500">
+        <img src="4.jpg" height="200" width="500">
+    </div>
+    <ul class="banner-dot">
+        <li class="on"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div class="pointer-left pointer"><img src="prev.png" alt="" width='15' height='25'></div>
+    <div class="pointer-right pointer"><img src="next.png" alt="" width='15' height='25'></div>
+</div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+var banner = utils.getElementsByClassName('banner');
+Carousel(banner[0],2000,200)
+Carousel(banner[1])
+function Carousel(bannerObj,timeInt,timeTra){
+    ~function(){
+        var contentObj = utils.children(bannerObj)[0],
+            dotLi = utils.children(bannerObj)[1].getElementsByTagName('li'),
+            leftObj = utils.children(bannerObj)[2],
+            rightObj = utils.children(bannerObj)[3],
+            contentImg = utils.children(contentObj,'img'),
+            imgNum = contentImg.length,
+            imgWidth = contentImg[0].offsetWidth;
+        for (var i = 0; i < contentImg.length; i++) {
+            if(i == 0){utils.append(contentObj,contentImg[i].cloneNode(true))}
+            if(i == contentImg.length-1){utils.prepend(contentObj,contentImg[i].cloneNode(true))}
+        };
+        for (var i = 0; i < dotLi.length; i++) {
+            dotLi[i].setAttribute("index",i+1);
+        };
+        timeInt = timeInt || 3000;
+        timeTra = timeTra || 400;
+        contentObj.style.width = (imgNum+2)*imgWidth + 'px';
+        contentObj.style.left = -imgWidth + 'px';
+        bannerObj.style.width = imgWidth + 'px';
+        var index = 1;
+        var animated = false;
+        var timer = null;
+        rightObj.onclick = function(){
+            if(!animated){
+                animate(-imgWidth);
+                if(index == imgNum){
+                    index = 1;
+                }
+                else{
+                    index++;
+                }
+                showdot();
+            }
+        }
+        leftObj.onclick=function(){
+            if(!animated){
+                animate(imgWidth);
+                if(index == 1){
+                    index = imgNum;
+                }
+                else{
+                    index--;
+                }
+                showdot();
+            }
+        }
+        for(var i = 0; i < dotLi.length; i++){
+            dotLi[i].onclick = function(){
+                if(!animated){
+                    var myindex = this.getAttribute('index');
+                    var newindex = -imgWidth*(myindex-index);
+                    animate(newindex);
+                    index = myindex;
+                    showdot();
+                }
+            }
+        }
+        function showdot(){
+            for(var i = 0; i < dotLi.length; i++){
+                if(dotLi[i].className == 'on'){
+                    dotLi[i].className = '';
+                }
+            }
+            dotLi[index-1].className = 'on';
+        }
+        function animate(offset){
+            animated = true;
+            var newleft = parseInt(contentObj.style.left)+offset;//改变后的left值
+            var time = timeTra;//位移时间
+            var interval = 4;//位移间隔时间
+            var speed=offset/(time/interval);//每次移动的偏移量
+            ~function go(){
+                if((speed < 0 && parseInt(contentObj.style.left) > newleft) || (speed > 0 && parseInt(contentObj.style.left) < newleft)){
+                     contentObj.style.left = parseInt(contentObj.style.left) + speed + 'px';
+                     setTimeout(go,interval);//超时器，一次性运行
+                }
+                else{
+                    if(newleft > -imgWidth){
+                        contentObj.style.left = -(imgWidth*imgNum) + 'px';
+                    }
+                    if(newleft < -(imgWidth*imgNum)){
+                        contentObj.style.left = -imgWidth + 'px';
+                    }
+                    animated = false;
+                }
+            }();
+        }
+        var star = function(){
+            timer = setInterval(function(){
+                rightObj.click();
+            },timeInt);
+        };
+        var stop = function(){
+            clearInterval(timer);
+        }
+        bannerObj.onmouseover=stop;
+        bannerObj.onmouseout=star;
+        star();
+    }();
+}
+</script>
+</body>
+</html>

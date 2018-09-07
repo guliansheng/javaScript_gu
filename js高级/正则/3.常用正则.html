@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    //1.有效数字正则:正数,负数,0,小数
+    //-> "."可能出现,可能不出现,出现后面必须跟一位或多位数字
+    //-> 最开始可以有+/-也可以没有
+    //-> 整数部分,一位数也可以是0~9之间的一个,多位数不能以0开头
+    //
+    //注意:
+    //-> []中出现的所有字符只是自身字符的含义,没有特殊含义
+    var reg = /^[+-]?(\d|[1-9]\d+)(\.\d+)?$/
+
+
+    //2.年龄在18~65
+    //-> 18-19阶段
+    //-> 20-59阶段
+    //-> 60-65阶段
+    //
+    //注意:
+    //-> []中不识别两位数
+    //-> [12] 1或者2
+    //-> [12-67] 1 , 2-6 , 7中的一个
+    var reg = /^(1[8-9]|[2-5]\d|6[0-5])$/
+
+    //3、验证邮箱的正则(简版)//左边：数字、字母、下环线、.、
+    var reg=/^[\w.-]+@[0-9a-zA-Z]+(\.[a-zA-Z]{2,4}){1,2}$/;
+    console.log(reg.test('1229303942@qq.com'))
+
+    //4、中国标准真实姓名2-4位汉字
+    var reg = /^[\u4e00-\u9fa5]{2,4}$/;
+    console.log(reg.test('顾连生'))
+
+    //5、身份证号码
+    //var reg=/^\d{17}(\d|X)$/;
+    //13 0828 1990 12 04 06 1 7
+    var str = '342622199501013638';
+    var reg=/^(\d{2})(\d{4})(\d{4})(\d{2})(\d{2})(\d{2})(\d)(\d|X)$/;
+    console.log(reg.exec(str));
+    console.log(str.match(reg));
+
+
+    //6.exec和match的区别
+    var str2 = 'gu123gu234gu4560';
+    var reg2 = /gu(\d+)/g;
+    console.log(reg2.exec(str2)) //=>["gu123","123"...]
+    console.log(reg2.exec(str2)) //=>["gu234","234"...]
+    console.log(reg2.exec(str2)) //=>["gu345","345"...]
+    console.log(str2.match(reg2)) //=>["gu123","gu234","gu345"]
+</script>
+</html>

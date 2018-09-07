@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+function avgFn(){
+    console.log(arguments)
+    arguments.__proto__ = Array.prototype;
+    arguments.sort(function (a,b){return a-b;});
+    arguments.pop();
+    arguments.shift();
+    return eval(arguments.join("+"))/arguments.length;
+}
+console.log(avgFn(10,20,30,10,30,40,40))
+</script>
+</html>

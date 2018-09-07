@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.nav{
+			display: inline-block;
+			position: relative;
+		}
+		.nav>li{
+			list-style: none;
+			float: left;
+			width: 60px;
+			height: 40px;
+			margin: 5px;
+		}
+		.nav{
+			padding: 0;
+		}
+		.nav a{
+			width: 100%;
+			height: 100%;
+			display: block;
+			background: #ccc;
+			line-height: 40px;
+			text-align: center;
+			text-decoration:none;
+		}
+		.nav-menu{
+			display: none;
+			width: 60px;
+			position: absolute;
+			left: 5px;
+			top: 45px;
+			padding: 0;
+			list-style: none;
+		}
+	</style>
+</head>
+<body>
+	<ul class="nav"><li><a href="">项目1</a></li><li><a href="">项目2</a></li><li><a href="">项目3</a></li><li><a href="">项目4</a></li><li><a href="">项目5</a></li><li><a href="">项目6</a></li><li><a href="">项目7</a></li><div class="nav-menu">
+			<li>菜单</li>
+			<li>菜单</li>
+			<li>菜单</li>
+			<li>菜单</li>
+			<li>菜单</li>
+		</div>
+	</ul>
+</body>
+<script type="text/javascript">
+	function hide(){
+		navMenu.style.display='none'
+	}
+	var navLiA=new Array;
+	var navMenu=document.querySelector('.nav-menu');
+	var nav=document.getElementsByClassName('nav')[0];
+	console.log(nav);
+	var navLi=nav.childNodes;
+	console.log(navLi);
+	// for(var i=0; i<navLi.length;i++){
+	// 	navLiA[i]=navLi[i].getElementsByTagName('a')[0];	
+	// 	if(i==0){
+	// 		navLiA[i].onmouseenter=function(){
+	// 			navMenu.style.display='block';
+	// 			navMenu.style.left=5+'px';
+	// 		}
+	// 	}
+	// 	else if(i==1){
+	// 		navLiA[i].onmouseenter=function(){
+	// 			navMenu.style.display='block';
+	// 			navMenu.style.left=75+'px';
+	// 		}
+	// 	}
+	// 	else if(i==2){
+	// 		navLiA[i].onmouseenter=function(){
+	// 			navMenu.style.display='block';
+	// 			navMenu.style.left=145+'px';
+	// 		}
+	// 	}
+	// 	else if(i==3){
+	// 		navLiA[i].onmouseenter=function(){
+	// 			navMenu.style.display='block';
+	// 			navMenu.style.left=215+'px';
+	// 		}
+	// 	}
+	// 	else if(i==4){
+	// 		navLiA[i].onmouseenter=function(){
+	// 			navMenu.style.display='block';
+	// 			navMenu.style.left=285+'px';
+	// 		}
+	// 	}
+	// 	else if(i==5){
+	// 		navLiA[i].onmouseenter=function(){
+	// 			navMenu.style.display='block';
+	// 			navMenu.style.left=355+'px';
+	// 		}
+	// 	}
+	// 	else if(i==6){
+	// 		navLiA[i].onmouseenter=function(){
+	// 			navMenu.style.display='block';
+	// 			navMenu.style.left=425+'px';
+	// 		}
+	// 	}
+	// 	if(i<=6){
+	// 		navLiA[i].onmouseout=function(){
+	// 			navMenu.style.display='none';
+	// 		}
+	// 	}	
+	// }
+	for(let i=0 ;i<navLi.length;i++){
+		if(i<7){
+			console.log(i);
+			navLi[i].onmouseover=function(){
+				navMenu.style.display='block';
+				navMenu.style.left=5+i*70+'px';
+			}
+			navLi[i].onmouseout=function(){
+				navMenu.style.display='none';
+			}
+		}
+	}
+	// 
+	// 
+	// es6兼容性写法
+	// var _loop = function _loop(i) {
+	// 	if (i < 7) {
+	// 		console.log(i);
+	// 		navLi[i].onmouseover = function () {
+	// 			navMenu.style.display = 'block';
+	// 			navMenu.style.left = 5 + i * 70 + 'px';
+	// 		};
+	// 		navLi[i].onmouseout = function () {
+	// 			navMenu.style.display = 'none';
+	// 		};
+	// 	}
+	// };
+
+	// for (var i = 0; i < navLi.length; i++) {
+	// 	_loop(i);
+	// }
+
+	navMenu.onmouseover=function(){
+		this.style.display='block';
+	}
+	navMenu.onmouseout=function(){
+		this.style.display='none';
+	}
+</script>
+</html>

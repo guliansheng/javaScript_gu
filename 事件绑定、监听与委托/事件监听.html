@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box1{
+            width:400px;
+            height:400px;
+            background:#ccc;
+            margin:0 auto;
+        }
+        .box2{
+            width:200px;
+            height:200px;
+            background:#ff0;
+        }
+        .box3{
+            width:100px;
+            height:100px;
+            background:#f0f;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="box2">
+            <div class="box3"></div>
+        </div>
+    </div>
+</body>
+<script>
+    let box1=document.querySelector('.box1');
+    let box2=document.querySelector('.box2');
+    let box3=document.querySelector('.box3');
+    var Event = {
+        addEvent: function(element,type,callback){
+            if(element.addEventListener){
+                element.addEventListener(type,callback,false);
+            }else if(element.attachEvent){
+                element.attachEvent('on' + type,callback);//只在冒泡阶段发生,ie6~8兼容,也可以在ie9+使用
+            }
+        },
+        removeEvent: function(element,type,callback){
+            if(element.removeEventListener){
+                element.removeEventListener(type,callback,false);
+            }else{
+                element.detachEvent('on' + type, callback);
+            }
+        },
+        getEvent: function(event){
+            event = event || window.event;
+            return event;
+        },
+        getTarget: function(event){
+            if(window.event){event=window.event}
+            return event.target || event.srcElement;
+        },
+        stopPropagation: function(event){
+            if(window.event){event=window.event}
+            if(event.stopPropagation){
+                event.stopPropagation();
+            }else{
+                event.cancelBubble = true;
+            }
+        },
+        preventDefault: function(event){
+            if(window.event){event=window.event}//兼容ie获取事件对象；
+            if(event.prevenDefault){
+                event.preventDefault();
+            }else{
+                event.returnValue = false;
+            }
+        }
+    }
+    Event.addEvent(box3,'click',function click(event){
+        alert(box3.className);
+        console.log(Event.getEvent(event.target));
+        //参数:元素对象 , 移除的行为 , 移除的绑定方法名
+        Event.removeEvent(box3,'click',click);
+    });
+
+    Event.addEvent(box2,'click',function click(event){
+        alert(box2.className);
+        console.log(event);
+        console.log(Event.getEvent(event.type));
+        Event.removeEvent(box2,'click',click);
+    });
+    Event.addEvent(box1,'click',function click(event){
+        alert(box1.className);
+        console.log(Event.getEvent(event.target));
+        Event.removeEvent(box3,'click',click);
+    });
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="index"></div>
+</body>
+<script type="text/javascript">
+//通过构造方法来创建对象
+// function GetEl(obj){
+//     objx=document.querySelector(obj);
+// }
+// GetEl.prototype.show = function(index,showIndex) {
+// 	if(typeof showIndex==='function'){
+// 		showIndex(index);
+// 	}
+// }
+// let oind=new GetEl('.index');
+// oind.show('这是一个参数',function(ind){
+// 	objx.innerHTML=ind;
+// });
+
+
+//es6的class创建对象
+class GetEl{
+    constructor(obj){
+       this.obj=obj;
+    }
+    show(index,showIndex){
+        let objx=document.querySelector(this.obj);
+        if(typeof showIndex==='function'){
+            showIndex(index,objx);
+        }
+    }
+}
+let oind=new GetEl('.index');
+oind.show('这是测试内容',function(ind,objx){
+    objx.innerHTML=ind;
+})
+</script>
+</html>

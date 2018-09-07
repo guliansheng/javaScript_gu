@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p>111111111111111</p>
+	<p>222222222222222</p>
+	<div class="div"><span>1111111111111111111111</span><p>333333333333333</p><p>333333333333333</p><span>333333333333333</span><p><span>44444444444444444444444</span></p><p>333333333333333</p>
+    </div>
+</body>
+<script type="text/javascript">
+b=document.getElementsByTagName('p');
+for(i=0;i<b.length;i++){
+	b[i].style.color="#f00";
+}
+d=document.getElementsByClassName('div')[0];
+d.style.background='#ccc';
+d.firstChild.style.color='#000';
+first=d.firstChild;
+first.nextSibling.style.background='#f0f';
+d.childNodes[3].style.color='#f0a';
+d.childNodes[3].innerHTML='cccccccccccccccc';
+alert(d.childNodes[4].textContent)
+</script>
+</html>

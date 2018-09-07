@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="divDate" style="width: 400px;height:50px"></div>
+</body>
+<script type="text/javascript">
+getDate();
+divDate=document.getElementById('divDate');
+setInterval(getDate
+,1000)
+function getDate(){
+	date=new Date();
+	year=date.getFullYear();
+	month=date.getMonth()+1;
+	day=date.getDate();
+	hour=date.getHours();
+	var minute=date.getMinutes();
+	var second=date.getSeconds();
+	millisecond1=Date.parse("1 1,"+parseInt(year+1));
+	millisecond2=date.getTime()
+	millisecond=parseInt(millisecond1)-parseInt(millisecond2);
+	day=parseInt(millisecond/(24*60*60*1000));
+	millisecond-=day*24*60*60*1000;
+	hour=parseInt(millisecond/(60*60*1000));
+	millisecond-=hour*60*60*1000;
+	minute=parseInt(millisecond/(60*1000));
+	millisecond-=minute*60*1000;
+	second=parseInt(millisecond/1000);
+	if(hour<10){
+		hour='0'+hour;
+	}
+	if(minute<10){
+		minute='0'+minute;
+	}
+	if(second<10){
+		second='0'+second;
+	}
+	divDate.innerHTML=year+'年剩余时间：'+day+'天'+hour+'时'+minute+'分'+second+'秒';
+}
+</script>
+</html>

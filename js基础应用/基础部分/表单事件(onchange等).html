@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	
+</style>
+<body>
+    <!-- 表单中的项要有name属性 -->
+	<form action="" id='fid'>
+	<p>用户名：</p>
+	<p><input type="text" id='ipt' value='用户名'></p>
+	<p>密码：</p>
+	<p><input type="text" id='mm' value='123456'></p>
+	
+ 	<p>选择城市：</p>
+ 	<select id='s1'><!-- 下拉菜单 -->
+	<option disabled>选择城市</option><!-- disable可以让这行不能被选中 -->
+	<option value='北京'>北京</option><!-- value是这行的值，可以通过value控制该行 -->
+	<option value='上海'>上海</option>
+	<option value='广州'>广州</option>
+ 	</select>
+ 	<h4>请确认您选择的城市：<span id='s2'>北京</span></h4>
+ 	<p><input type="submit" value='OK' ></p>
+ 	<p><input type="reset" value='Cancel' ></p>
+	</form>
+</body>
+<script type="text/javascript">
+iptobj=document.getElementById('ipt');
+
+
+//获得焦点事件
+iptobj.onfocus=function(){
+	//outlineColor设置输入框边框颜色；
+	this.style.outlineColor='#f00'; 
+	//选中方法，执行时选中相应内容；
+	this.select();
+}
+
+//失去焦点事件	
+iptobj.onblur=function(){
+	val=this.value;
+	if(val.length<6){
+		document.write('用户至少6位！');
+	}
+}
+
+//oncahnge 事件；一般用于下拉菜单；
+s1obj=document.getElementById('s1');
+s2obj=document.getElementById('s2');
+s1obj.onchange=function(){
+	s2obj.innerHTML=this.value;
+}
+
+
+//onselect事件
+mmobj=document.getElementById('mm');
+mmobj.onselect=function(){
+	mmobj.value='请输入密码';
+}
+
+
+//onsubmit事件；当提交表单时，是给表单用的，只有给form使用；
+fidobj=document.getElementById('fid');
+fidobj.onsubmit=function(){
+	r=confirm('您确认提交表单么？');
+	if(!r){
+		return false;
+	}
+}
+//重置表单时
+fidobj.onreset=function(){
+	r=confirm('您确认清除表单数据么？');
+	if(!r){
+		return false;
+	}
+}
+
+
+
+
+</script>
+</html>

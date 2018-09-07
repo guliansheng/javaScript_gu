@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	#clock {
+		width: 200px;
+		height: 50px;
+		font-size: 30px;
+		background-color: #000;
+		color: #0f0;
+		line-height: 50px;
+		font-weight: bold;
+		text-align: center;
+		border-radius: 50px;
+	}
+
+	span {
+		cursor: pointer;
+	}
+</style>
+
+<body>
+	秒表实例：
+	<div id="clock">10:10:10</div>
+	<!--  <button id="bid1"><span>开始</span></button>
+	 <button id="bid2"><span>结束</span></button> -->
+	<input type="button" value="开始" id='bid1'>
+	<input type="button" value="结束" id='bid2'>
+</body>
+<script>
+	//秒表实例
+	var sobj = [];
+	var i = 0;
+
+	function getDate() {
+		dobj = new Date();
+		hour = dobj.getHours();
+		if (hour < 10) {
+			hour = '0' + hour;
+		}
+		minute = dobj.getMinutes();
+		if (minute < 10) {
+			minute = '0' + minute;
+		}
+		second = dobj.getSeconds();
+		if (second < 10) {
+			second = '0' + second;
+		}
+		str = hour + ':' + minute + ':' + second;
+		sidobj = document.getElementById('clock').innerHTML = str;
+	}
+	getDate(); //先调用秒表，否侧有一秒刷新停顿
+
+	//定时器：
+	//开始秒表方法
+	function start() {
+		sobj[i] = setInterval(getDate, 1000);
+		i++;
+	}
+	start();
+	//获取开始按钮
+	bidobj = document.getElementById('bid1');
+	bidobj.onclick = function () {
+		start();
+		console.log(sobj, i);
+	}
+	//停止秒表方法
+	function stop() {
+		for (i in sobj) {
+			clearInterval(sobj[i]);
+		}
+		i = 0;
+		sobj = [];
+	}
+	//获取停止按钮
+	bid2obj = document.getElementById('bid2');
+	bid2obj.onclick = function () {
+		stop();
+		console.log(sobj, i);
+	}
+</script>
+
+</html>

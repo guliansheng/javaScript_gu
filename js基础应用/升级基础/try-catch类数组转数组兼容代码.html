@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</body>
+<script type="text/javascript">
+    //try-catch处理兼容必须是try中的代码可能会报错才能使用该方法处理,只有在不得已的情况下才使用,比较消耗性能,因为有可能执行两段代码
+    var lists = document.getElementsByTagName('div');
+    var utils={
+        listToArray:function(likeAry){
+            var ary=[];
+            try{
+                ary=Array.prototype.slice.call(likeAry);
+            }catch(e){
+                for(var i=0;i<likeAry.length;i++){
+                    ary[ary.length]=likeAry[i];
+                }
+            }
+            return ary;
+        }
+    }
+    var ary = utils.listToArray(lists)
+    console.log(ary)
+    // console.log([].slice.call(lists));
+</script>
+</html>

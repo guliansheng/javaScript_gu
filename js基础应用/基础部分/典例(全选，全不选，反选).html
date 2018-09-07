@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		h3{
+			cursor: pointer;
+		}
+		h2{
+			cursor:pointer;
+		}
+		input{
+			cursor:pointer;
+		}
+		*{
+			font-family: 微软雅黑;
+		}
+	</style>
+</head>
+<body>
+	<h1>aaaaaaaaaaaaaaaaaaaaaaaaa</h1>
+	<h1>aaaaaaaaaaaaaaaaaaaaaaaaa</h1>
+	<h1>aaaaaaaaaaaaaaaaaaaaaaaaa</h1>
+	<h1>aaaaaaaaaaaaaaaaaaaaaaaaa</h1>
+	<h1>aaaaaaaaaaaaaaaaaaaaaaaaa</h1>
+    <br>
+	<h2>bbbbbbbbbbbbbbbbbbbbbbbbbb</h2>
+	<h2>bbbbbbbbbbbbbbbbbbbbbbbbbb</h2>
+	<h2>bbbbbbbbbbbbbbbbbbbbbbbbbb</h2>
+	<h2>bbbbbbbbbbbbbbbbbbbbbbbbbb</h2>
+	<h2>bbbbbbbbbbbbbbbbbbbbbbbbbb</h2>
+	<br>
+	<h3>linux</h3>
+	<p>linux is very muchlinux is very muchlinux is very muchlinux is very muchlinux is very muchlinux is very muchlinux is very muchlinux is very muchlinux is very much</p>
+	<h3>linux</h3>
+	<p>linux is very muchlinux is very muchlinux is very muchlinux is very muchlinux is very muchlinux is very muchlinux is very muchlinux is very muchlinux is very much</p>
+	<h3>linux</h3>
+	<p>linux is very muchlinux is very muchlinux is very muchlinux is very muchlinux is very muchlinux is very muchlinux is very muchlinux is very muchlinux is very much</p>
+	<h3>linux</h3>
+	<p>linux is very muchlinux is very muchlinux is very muchlinux is very muchlinux is very muchlinux is very muchlinux is very muchlinux is very muchlinux is very much</p>
+	<br>
+	<form action="javascript:">
+	<!-- label可以使选择项，在点击label内的所有内容都能选中 -->
+	<label><p><input type="checkbox" checked='true'>篮球</p></label>
+	<!-- checked为true是表示选中，为false是表示未选中； -->
+	<label><p><input type="checkbox">足球</p></label>
+	<!-- checkbox表示复选框，radio表示单选框； -->
+	<label><p><input type="checkbox">游泳</p></label>
+	<label><p><input type="checkbox">跑步</p></label>
+	<label><p><input type="checkbox">爬山</p></label>
+	<input type="button" value='全选' id='all'>
+	<input type="button" value='全不选' id='notall'>
+	<input type="button" value='反选' id='unall'>
+	</form>
+</body>
+<script type="text/javascript">
+
+//移入移出事件
+h1objs=document.getElementsByTagName('h1');
+for(i=0;i<h1objs.length;i++){
+	h1objs[i].onmouseenter=function(){
+		this.style.background='#ccc';
+		//循环内出现方法，该方法中对象若要用到变量，则内部要用this，不能用相应含变量的对象；
+	}
+	h1objs[i].onmouseleave=function(){
+		this.style.background='#fff';
+	}
+}
+
+
+
+//循环单击切换背景
+h2objs=document.getElementsByTagName('h2');
+for(i=0;i<h2objs.length;i++){
+	h2objs[i].setAttribute('num',0);
+	h2objs[i].onclick=function(){
+		nums=this.getAttribute('num');
+		if(nums%2==0){
+			this.style.background='#ccc';
+		}
+		else{
+			this.style.background='#fff';
+		}
+		this.setAttribute('num',parseInt(nums)+1);
+	}
+}
+
+
+
+//点击循环隐藏，显示；
+h3objs=document.getElementsByTagName('h3');
+pobjs=document.getElementsByTagName('p');
+for(i=0;i<h3objs.length;i++){
+	pobjs[i].setAttribute('id',i);
+	h3objs[i].setAttribute('num2',0);
+	h3objs[i].setAttribute('line',i);
+	h3objs[i].onclick=function(){
+		nums2=this.getAttribute('num2');
+		line=this.getAttribute('line');
+		np=document.getElementById(line);
+		if(nums2%2==0){
+			np.style.display='none';
+		}
+		else{
+
+			np.style.display='block';
+	    }
+	    this.setAttribute('num2',parseInt(nums2)+1);
+	}
+}
+
+
+//全选，全不选，反选实例；
+allobj=document.getElementById('all');
+notallobj=document.getElementById('notall');
+unallobj=document.getElementById('unall');
+inobj=document.getElementsByTagName('input');
+allobj.onclick=function(){
+	for(i=0;i<inobj.length;i++){
+	  inobj[i].checked=true;
+	}
+}
+notallobj.onclick=function(){
+	for(i=0;i<inobj.length;i++){
+	  inobj[i].checked=false;
+	}
+}
+unallobj.onclick=function(){
+	for(i=0;i<inobj.length;i++){
+	  inobj[i].checked=!inobj[i].checked;
+	}
+}
+
+
+</script>
+</html>

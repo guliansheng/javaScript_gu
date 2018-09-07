@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+var arr1=['wang','li','gu','chen','zhang'];
+var str1=arr1.toString();
+var arr2=arr1.splice(1,2,str1);
+var str2=String(arr1);
+var str3=arr1+'';
+console.log(str1,arr2,arr1,str2,str3);
+console.log(arr1);
+arr1.splice(arr1.length,0,'末尾添加')
+//splice 会改变原数组
+//splice(0) 清空数组
+//splice() 一项都不删除,返回一个新的空数组
+//splice(n) 从n删除到结尾
+//splice(0,0,x) 向数组开头添加元素
+//splice(ary.length,0,x) 向数组末尾添加
+//splice(0,1) 删除第一项
+//splice(ary.length-1,1) 删除最后一项
+//splice(i,1)//使用splice删除数组的一项,如果该项后面还有很多项,就会消耗性能,这时可以将最后一项拿过来替换该项,再将最后一项删除(arr[i] = arr[arr.length-1]; arr.length--;)
+var arr3 = [3,78,'项目1','项目2',897,'项目4'];
+var newarr3 = arr3.slice(0);//和slice()效果相同,克隆数组;
+console.log(newarr3);
+//slice 不会改变原数组
+//slice(n) 从n处开始再到末尾
+//indexOf()和indexLastOf()不兼容ie6~8;
+</script>
+</html>

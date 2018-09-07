@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            margin:0;
+        }
+        .box{
+            position: relative;
+            border:10px solid #ff0;
+        }
+        .box1{
+            border:10px solid #ccc;
+            /* position: relative; */
+            text-align:center;
+        }
+        .box2{
+            display: inline-block;
+            width: 200px;
+            height:200px;
+            margin:20px auto;
+            background:#ccc;
+            border: 10px solid #ff0;
+            border-left: 5px solid #ff0;
+            padding:10px;
+            overflow:auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="box1">
+            <div class="box2">scrollTop=scrollHeight-clientHeight=padding+包含内容的完全高度-(padding+height-滚动条)=包含内容的完全高度-height-滚动条scrollWidth=padding+包含内容的完全高度clientWidth=padding+height-滚动条offsetWidth=border+padding+height;scrollTop=scrollHeight-clientHeight
+                =padding+包含内容的完全高度-(padding+height-滚动条)
+                =包含内容的完全高度-height-滚动条</div>
+        </div>
+    </div>
+    
+</body>
+<script>
+    let box2=document.querySelector('.box2');
+    let position=box2.getBoundingClientRect();
+    box2.scrollTop=50;
+    box2.scrollLeft=50;
+    // box2.style.width=400+'px'; 
+    console.log('这是offsetwidth'+box2.offsetWidth)
+    console.log('这是offsetHeight'+box2.offsetHeight)
+    console.log('这是top：'+position.top); 
+    console.log('这是left：'+position.left);
+    console.log('这是right：'+position.right); 
+    console.log('这是bottom：'+position.bottom);
+    console.log('这是width：'+position.width);
+    console.log('这是height：'+position.height);
+</script>
+</html>

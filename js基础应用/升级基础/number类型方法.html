@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+     console.log(isNaN('12px'));
+     console.log(isNaN('12'));
+     console.log(isNaN([]));
+     console.log(parseInt('12px')+56);
+     console.log(parseInt('pa12'));
+     console.log(parseInt('12pa'));
+     console.log(parseFloat('12.5pa'));
+     console.log('Number()方法');
+     console.log(Number([]));      //0
+     console.log(Number(NaN));     //NaN
+     console.log(Number('12'));    //12
+     console.log(Number('12px'));  //NaN
+     console.log(Number(['12']));  //12
+     console.log(Number([12]));    //12
+     console.log(Number({}));      //NaN
+     console.log(Number(undefined));//NaN
+     console.log(Number(null));    //0
+     console.log(Number('null'));  //NaN
+</script>
+</html>

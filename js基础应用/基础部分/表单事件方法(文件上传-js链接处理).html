@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css"></style>
+	<style type="text/css">
+		#textid {
+			display: none;
+			/*隐藏textid*/
+		}
+
+		#uptext {
+			width: 200px;
+			margin-top: 7px;
+
+		}
+
+		#up {
+			cursor: pointer;
+			/*设置鼠标为手型；*/
+			float: left;
+		}
+
+		#su {
+			background: #fff;
+			border: solid 1px #ccc;
+			margin-top: 10px;
+		}
+	</style>
+</head>
+
+
+
+<body>
+	<form action="go.php" id='fid'>
+		<p>用户名：</p>
+		<p>
+			<input type="text" id='tid' value='' placeholder="用户名">
+		</p>
+		<!-- placeholder占位 -->
+		<p>
+			<input type="file" id='textid'>
+		</p>
+		<p>文件上传：</p>
+		<p>
+			<img src="images/up.jpg" width="30px" height="30px" id='up'>
+			<input id='uptext' placeholder="文件路径">
+		</p>
+		<p>
+			<input type="submit" value='OK' id='su'>
+		</p>
+	</form>
+	<h1>js技术</h1>
+	<p>i like jsi like jsi like jsi like jsi like jsi like jsi like jsi like jsi like jsi like jsi like jsi like jsi like jsi like
+		jsi like jsi like jsi like jsi like jsi like jsi like jsi like jsi like jsi like jsi like jsi like jsi like jsi like jsi
+		like jsi like jsi like jsi like jsi like jsi like jsi like jsi like jsi like jsi like jsi like js</p>
+	<!-- 链接中用JavaScript:来代替，表示链接是否跳转，跳转到哪里，将在JavaScript代码中执行； -->
+	<p>
+		<a href="javascript:" id='baidu'>百度</a>
+	</p>
+	<h1>提交表单</h1>
+	<button id='submit'>OK</button>
+	<button id='reset'>Cancle</button>
+
+</body>
+
+
+
+
+<script type="text/javascript">
+	tidobj = document.getElementById('tid');
+	tidobj.onfocus = function () {
+		//选中元素
+		this.select();
+	}
+
+
+
+
+	tidobj.onkeydown = function (event) {
+		kc = event.keyCode;
+		document.title = kc;
+		//让他失去焦点
+		if (kc == 32) {
+			this.blur();
+		}
+	}
+
+
+
+
+	//获得焦点
+	tidobj.focus();
+
+
+
+
+	textobj = document.getElementById('textid');
+	uptextobj = document.getElementById('uptext');
+	upobj = document.getElementById('up');
+	upobj.onclick = function () { //当点击up图片时发生事件；
+		textobj.click(); //点击textid；	
+	}
+	textobj.onchange = function () {
+		uptextobj.value = textobj.value;
+	}
+
+
+
+
+	//提交和重置表单按钮
+	submitobj = document.getElementById('submit');
+	resetobj = document.getElementById('reset');
+	fidobj = document.getElementById('fid');
+	//设置按钮实现提交表单，一般用于提交按钮在表单外部时，且可以实现多个表单的不同提交；
+	submitobj.onclick = function () {
+		fidobj.submit();
+	}
+	//设置按钮实现重置表单
+	resetobj.onclick = function () {
+		fidobj.reset();
+	}
+	fidobj.onreset = function () {
+		r = confirm('您确认重置表单么？');
+		if (!r) {
+			return false;
+		}
+	}
+
+
+
+
+	//是否阻止链接跳转
+	baiduobj = document.getElementById('baidu');
+	baiduobj.onclick = function () {
+		//prompt提示框，可以输入值，返回值为输入值；
+		p = prompt('是否跳转到百度? 是请输入Y或y：');
+		if (p == 'Y' || p == 'y') {
+			//location为浏览器地址栏；
+			location = "http://www.baidu.com";
+		} else {
+			return false;
+		}
+	}
+</script>
+
+</html>
