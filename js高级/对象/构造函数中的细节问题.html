@@ -21,12 +21,13 @@
     }
     var f = new Fn();
     var f2 = new Fn;//如果不需要传参,可以不加(),同样是创建了一个实例
-    console.log(f)
+    console.dir(f)
     console.log(f2)
     console.log(Fn)
     console.log(f instanceof Fn)
     console.log(f instanceof Array)
     console.log(f instanceof Object)//万物皆对象
+    console.log(f.constructor == Fn)//万物皆对象
     console.log('m' in f);
     console.log('n' in f);
     console.log('toString' in f);//toString是公有属性,同样为true

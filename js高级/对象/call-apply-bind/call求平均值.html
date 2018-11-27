@@ -14,7 +14,6 @@
         [].splice.call(arguments,this.length-1,1);
         console.log(arguments);
         console.log((eval([].join.call(arguments,'+'))/arguments.length).toFixed(1))//保留几位小数点,会四舍五入
-
     }
 
     //将类数组克隆到一个新数组中,再操作这个数组

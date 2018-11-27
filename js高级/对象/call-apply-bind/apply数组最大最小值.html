@@ -12,8 +12,8 @@
     console.log(...arr);
     console.log("扩展符 : "+Math.max(...arr));
     console.log("扩展符 : "+Math.min(...arr));
-    console.log("扩展符 : "+Math.max.apply(null, arr));
-    console.log("扩展符 : "+Math.min.apply(null, arr));
+    console.log("apply : "+Math.max.apply(null, arr));
+    console.log("apply : "+Math.min.apply(null, arr));
     console.log("字符串拼接 : "+eval("Math.max("+arr.toString()+")"));
     console.log("Math.max("+arr.toString()+")");
 </script>

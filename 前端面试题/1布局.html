@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" href="">
+  <style type="text/css">
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .redC {
+    width: 300px;
+    height: 300px;
+    border-radius: 150px;
+    border: 1px solid red;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -150px;
+    box-sizing: border-box;
+  }
+
+  .blueC {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    border: 1px solid blue;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    box-sizing: border-box;
+  }
+
+  .redR {
+    border: 1px solid red;
+    box-sizing: border-box;
+  }
+
+  .blueR {
+    border: 1px solid blue;
+    box-sizing: border-box;
+    width: 50%;
+    height: 50%;
+    float: right;
+  }
+
+  .greenR {
+    width: 80px;
+    height: 40px;
+    border: 1px solid green;
+    line-height: 40px;
+    text-align: center;
+    float: right;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="redR">
+    <div class="blueR">
+      <div class="greenR">CY</div>
+    </div>
+  </div>
+  <div class="redC">
+    <div class="blueC"></div>
+  </div>
+</body>
+<script type="text/javascript">
+function start() {
+  var wid = document.documentElement.clientWidth
+  var hei = document.documentElement.clientHeight
+  var redR = document.getElementsByClassName('redR')[0];
+  redR.style.width = wid / 2 + 'px'
+  redR.style.height = hei / 2 + 'px'
+}
+start()
+window.onresize = start
+</script>
+
+</html>

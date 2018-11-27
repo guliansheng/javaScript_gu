@@ -10,23 +10,23 @@
 <script >
 console.log(String)
 console.dir(String.prototype)
-str='/web/HOME.home/index.home.php.HOME';
-num1=str.search('home');//search:查找字符串home是否在字符串str内，如果在返回首个字符位置，否则返回-1；
-console.log('num1='+num1);
+str='/web/HOME.home/index.home.php.HOME'
+num1=str.search('home')//search:查找字符串home是否在字符串str内，如果在返回首个字符位置，否则返回-1；
+console.log('num1='+num1)
 num2=str.search(/home/i);//正则表达式：i表示忽略大小写；
-console.log('num2='+num2+'<br>');
+console.log('num2='+num2+'<br>')
 
 
-arr1=str.match('home');//match:匹配字符串home是否在字符串str内，如果在将home放到数组arr中，否则返回-1；
-console.log('arr1='+arr1);
+arr1=str.match('home')//match:匹配字符串home是否在字符串str内，如果在将home放到数组arr中，否则返回-1；
+console.log('arr1='+arr1)
 arr2=str.match(/home/ig);//正则表达式: g表示全局搜索home，i忽略大小写；
-console.log('arr2='+arr2);
+console.log('arr2='+arr2)
 
 
 str2=str.replace('HOME','home');//replace：将字符串中的HOME替换成home，不改变原字符串，返回到新的字符串str2中；
-console.log('str2='+str2);
-str3=str.replace(/home/ig,'mgedu');
-console.log('str3='+str3);
+console.log('str2='+str2)
+str3=str.replace(/home/ig,'mgedu')
+console.log('str3='+str3)
 
 console.log('\n开始str4测试:')
 var str4="  How are you doing today , Jack?  "
@@ -34,18 +34,18 @@ console.log(str4.split(" "))
 console.log(str4.split(""))
 console.log(str4.split("@"))//如果字符串中没有该符号,则将整个字符串作为数组第一项存贮在数组中
 console.log(str4.split());//和上面一样效果
-console.log(str4.split(" ",2))
+console.log(str4.split(" ",2))//获取两项
 console.log(str4.split(" ",8))
-console.log(str4.charAt(0));
-console.log(str4.charAt(100));//如果超出字符串长度,返回一个空的字符串,而str4[100]返回undefined
+console.log(str4.charAt(0)) //返回指定位置字符
+console.log(str4.charAt(100))//如果超出字符串长度,返回一个空的字符串,而str4[100]返回undefined
 console.log(str4.charCodeAt(6))//返回对应位置字符的Unicode编码值
 console.log(String.fromCharCode(119));//将值按照ASCII码表中的信息,转换为原有的字符,和charCodeAt对应
-console.log(str4.substr(4,10));//从4开始,截取10个
-console.log(str4.substring(4,16));//从4开始,截取到16
-console.log(str4.includes('ara'));
-console.log(str4.indexOf('are'));
-console.log(!str4.indexOf('ara'));
-console.log(str4.trim());//去除首尾空格,trimLeft()去开始空格,trimRight()去除结尾空格,有兼容性问题
+console.log(str4.substr(4,10))//从4开始,截取10个
+console.log(str4.substring(4,16))//从4开始,截取到16
+console.log(str4.includes('ara'))
+console.log(str4.indexOf('are'))//获取字符串中该字符第一次出现的索引位置
+console.log(!str4.indexOf('ara'))
+console.log(str4.trim())//去除首尾空格,trimLeft()去开始空格,trimRight()去除结尾空格,有兼容性问题
 console.log(str4)
 </script>
 </html>

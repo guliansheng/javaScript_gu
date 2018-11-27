@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+function containsRepeatingLetter(str) {
+  var arr = []
+  str.replace(/[a-zA-Z]/g,function(){
+    console.log(arguments)
+    arr[arr.length] = arguments[0]
+  })
+  for (var i = 1; i < arr.length-1; i++){
+    if(arr[i] === arr[i+1]){
+      return true
+    }
+  }
+  return false
+}
+var str = 'rattlerr';
+console.log(containsRepeatingLetter(str))
+</script>
+</html>

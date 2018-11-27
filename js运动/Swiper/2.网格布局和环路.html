@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="dist/css/swiper.min.css">
+  <script type="text/javascript" src="dist/js/swiper.min.js"></script>
+  <style type="text/css">
+    .swiper1,.swiper2{
+      margin: 100px auto;
+      width: 1000px;
+      height:400px;
+      overflow:hidden;
+    }
+  </style>
+</head>
+<body>
+   <div class="swiper1">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" style='background: #123456;'></div>
+      <div class="swiper-slide" style='background: #549687;'></div>
+      <div class="swiper-slide" style='background: #343576;'></div>
+      <div class="swiper-slide" style='background: #989786;'></div>
+      <div class="swiper-slide" style='background: #679090;'></div>
+      <div class="swiper-slide" style='background: #432679;'></div>
+      <div class="swiper-slide" style='background: #765438;'></div>
+    </div>
+  </div>
+  <div class="swiper2">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" style='background: #123456;'></div>
+      <div class="swiper-slide" style='background: #549687;'></div>
+      <div class="swiper-slide" style='background: #343576;'></div>
+      <div class="swiper-slide" style='background: #989786;'></div>
+      <div class="swiper-slide" style='background: #679090;'></div>
+      <div class="swiper-slide" style='background: #432679;'></div>
+      <div class="swiper-slide" style='background: #765438;'></div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript">
+var mySwiper1 = new Swiper('.swiper1', {
+  autoplay: true, //可选选项，自动滑动
+  slidesPerView : 3,
+  loop : true,//开启环路
+  slideToClickedSlide: true,//点击时区域居中
+})
+var mySwiper2 = new Swiper('.swiper2', {
+  autoplay: true, //可选选项，自动滑动
+  slidesPerView : 3,//设置slider容器能够同时显示的slides数量
+  slidesPerGroup : 2,//定义slides的数量多少为一组
+  spaceBetween : 20,
+  slidesOffsetBefore : 200,
+  slideToClickedSlide: true,//点击时区域居中
+
+})
+</script>
+</html>

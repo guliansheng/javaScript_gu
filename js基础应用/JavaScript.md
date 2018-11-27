@@ -22,15 +22,15 @@
     - JS中很多的词都是有特殊含义的，我们这些词叫做关键字；现在没有特殊含义，以后可能会作为关键词的，我们叫做保留字；而关键字和保留字都不可以随便用来命名
 
 ####1.4 数据类型转换
-- == 两边
+- '==' 两边
     + 两个等于号比较，左右两边数据值的类型不一样，浏览器会把两边的类型使用Number()方法都转换为数字然后再比较，但是null和undefined除外
     ```
     null == undefined  //=> true
     null === undefined //=> false 
-    null == 0 //=>false  null和undefined和其他任何值都不相等
-
+    null == 0 //=> false  null和undefined和其他任何值都不相等
+    '' == 0 //=> true
     ```
-    + 等号两边类型相同,进行===比较
+    + 等号两边类型相同,进行 '===' 比较 (不会进行强制类型转换)
 
 ##2 内置函数
 ####2.1 Math
@@ -98,9 +98,9 @@ Math.round(Math.random()*(m-n)+n)
 
 - nextElementSibling：获取当前节点的下一个弟弟元素节点
 
-- firstElementChild  第一个子元素节点
+- firstElementChild：第一个子元素节点
 
-- lastElementChild 最后一个子元素节点
+- lastElementChild：最后一个子元素节点
 > 获取[元素节点] (不是节点) 的属性都不兼容IE6~8;
 
 

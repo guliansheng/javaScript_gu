@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name=description content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <style type="text/css">
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .text {
+    margin: 100px auto;
+    background: #ccc;
+    text-align: center;
+    line-height: 100px;
+    width: 400px;
+    height: 100px;
+  }
+
+  .text>span {
+    position: relative;
+  }
+
+  @-webkit-keyframes animate {
+    from {
+      top: 0;
+    }
+    to {
+      top: -15px;
+    }
+  }
+
+  .side {
+    width: 80px;
+    position: fixed;
+    left: 0;
+    top: 100px;
+  }
+
+  .side ul {
+    list-style: none;
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  .side ul>li {
+    height: 30px;
+    text-align: center;
+    flex: 1;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    line-height: 30px;
+    background: #2581bd;
+    transform: translate(-80px, 0);
+    transition: all 2s linear;
+  }
+
+  .side ul>li.show {
+    transform: translate(0, 0);
+  }
+
+  .side ul>li.hide {
+    transform: translate(-80px, 0);
+  }
+  </style>
+</head>
+
+<body>
+  <div class="text">
+    <span>阜</span>
+    <span>阳</span>
+    <span>师</span>
+    <span>范</span>
+    <span>学</span>
+    <span>院</span>
+    <span>信</span>
+    <span>息</span>
+    <span>工</span>
+    <span>程</span>
+    <span>学</span>
+    <span>院</span>
+  </div>
+  <div class="side">
+    <ul>
+      <li>第1项</li>
+      <li>第2项</li>
+      <li>第3项</li>
+      <li>第4项</li>
+      <li>第5项</li>
+      <li>第6项</li>
+      <li>第7项</li>
+      <li>第8项</li>
+      <li>第9项</li>
+      <li>第10项</li>
+      <li>第11项</li>
+      <li>第12项</li>
+      <li>第13项</li>
+      <li>第14项</li>
+      <li>第15项</li>
+    </ul>
+  </div>
+</body>
+<script type="text/javascript">
+var arr = ['red','orange','yellow','green','blue','purple','pink','brown','gray']
+var span = document.querySelectorAll('.text > span')
+for (var i = 0; i < span.length; i++) {
+  var random = Math.round(Math.random()*8)
+  console.log(random);
+  span[i].style.animation = `animate .8s ${80*i}ms linear infinite alternate`
+  span[i].style.color = arr[random]
+}
+var ul = document.querySelector('.side ul')
+var li = document.querySelectorAll('.side ul li')
+ul.addEventListener('mouseover', function() {
+  for (var i = 0; i < li.length; i++) {
+    var random = Math.round(Math.random()*8)
+    li[i].style.background = arr[random]
+    li[i].style.transition = `all .3s linear ${50*i}ms`
+    li[i].className = 'show'
+  }
+})
+ul.addEventListener('mouseout', function() {
+  for (var i = 0; i < li.length; i++) {
+    li[i].style.transition = `all .3s linear ${50*i}ms`
+    li[i].className = 'hide'
+  }
+})
+</script>
+
+</html>

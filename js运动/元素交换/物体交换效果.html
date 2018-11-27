@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		ul{
+			list-style: none;
+		}
+		img{
+			border: 0;
+		}
+		.box{
+			width:700px;
+			height: 300px;
+			display: flex;
+			margin:100px auto;
+			flex-flow:column;
+			justify-content: space-around;
+		}
+		.box ul{
+			width:100%;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			flex-wrap:wrap;
+		}
+		.box li{
+			width: 200px;
+			height: 130px;
+			font-size:0;
+			overflow: hidden;
+			margin:10px 0;
+		}
+		.box p{
+			font-size: 14px;
+		}
+		.box img{
+			width:200px;
+			height:100px;
+		}
+		.active{
+			border: 1px solid blue;
+			box-sizing: border-box;
+		}
+		.box2 div{
+			background: #ccc;
+			margin:10px 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul>
+			<li><img src="img/1.jpg" alt=""><p>第一张</p></li>
+			<li><img src="img/2.jpg" alt=""><p>第二张</p></li>
+			<li><img src="img/3.jpg" alt=""><p>第三张</p></li>
+			<li><img src="img/4.jpg" alt=""><p>第四张</p></li>
+			<li><img src="img/5.jpg" alt=""><p>第五张</p></li>
+			<li><img src="img/6.jpg" alt=""><p>第六张</p></li>
+		</ul>
+	</div>
+	<div class="box2">
+		<div>项目一</div>
+		<div>项目二</div>
+		<div>项目三</div>
+		<div>项目四</div>
+		<div>项目五</div>
+		<div>项目六</div>
+	</div>
+</body>
+<script>
+	//实现点击两个元素交换两个元素位置（元素集合所组成的类数组不能使用数组中的方法）
+	function ExchangeEl(box,collection) {
+		box.onclick = function (ev) {
+			var ev = ev || window.event
+			var tar = ev.target
+			function change() {
+				tar.className = 'active'
+				for (var i = collection.length - 1; i >= 0; i--) {
+					if(collection[i] !== tar && collection[i].className === 'active'){
+						var item1 = tar.cloneNode(true)
+						var item2 = collection[i].cloneNode(true)
+						var index = i
+					}
+				}
+				if (item1 && item2) {
+					tar.parentNode.replaceChild(item1,collection[index])
+					tar.parentNode.replaceChild(item2,tar)
+					item1.className = ''
+					item2.className = ''
+				}
+			}
+			if(tar.tagName === 'IMG'){
+				var tar = tar.parentNode
+				change()
+			}
+			else if(tar.tagName !== collection[0].tagName || tar == box){
+				return
+			}
+			else{
+				change()
+			}
+		}
+	}
+	var box = document.getElementsByClassName('box')[0]
+	var lis = box.getElementsByTagName('li')
+	ExchangeEl(box,lis)
+	var box2 = document.getElementsByClassName('box2')[0]
+	var divs = box2.getElementsByTagName('div')
+	ExchangeEl(box2,divs)
+</script>
+</html>

@@ -32,13 +32,21 @@
     //2.记录字符串中每个字母出现次数
     console.log("2.记录字符串中每个字母出现次数")
     reg = /[a-z]/gi
-    str = "zhufnegjiaoyupeixun";
+    str = "zhufnegjiaoyupeixunggggggfsdgrgrdgdgergagjdjgkyuk";
     var obj = {}
     str.replace(reg,function(){
         (arguments[0] in obj) ? obj[arguments[0]]++ : obj[arguments[0]] = 1;
     })
     console.log(obj)
-
+    var imax = 0
+    var iindex = ''
+    for (var i in obj) {
+        if(obj[i] > imax){
+            imax = obj[i]
+            iindex = i
+        }
+    }
+    console.log(iindex,imax)
     //3.模板引擎实现初步原理
     console.log("3.模板引擎实现初步原理")
     str = "my name is {0} , my age is {1} , I love {2}";
@@ -52,7 +60,7 @@
     //4.获取地址传参值
     console.log("4.获取地址传参值")
     str = "https://www.baidu.com/baidu?&ie=utf-8&word=%E8%BF%99%E6%98%AF"
-    reg = /([^?&=]+)=([^?&=]+)/g
+    reg = /([^?&=]+)=([^?&=]+)/g //等号左边和右边除了?&=除外的任意字符
     obj = {}
     str.replace(reg,function(){
         console.log(arguments[0])
